@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * FS Innovation brand tokens.
+ * Matches the tenant portal so marketing and product feel like one
+ * design system, not two disconnected sites.
+ */
+:root {
+  --color-brand-primary: #187a35;
+  --color-brand-primary-deep: #0f4d20;
+  --color-brand-accent: #ecf6ea;
+  --color-brand-accent-strong: #d9e8d5;
+  --color-brand-fg: #0d1e11;
+  --color-brand-fg-soft: #3d4a3f;
+  --color-brand-muted: #6a7869;
+  --color-brand-muted-soft: #97a494;
+  --color-brand-border: #e3ebe0;
+  --color-brand-surface-soft: #f5f8f3;
+  --color-brand-input-border: #cfd8cc;
+}
+
+html {
+  color: var(--color-brand-fg);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Elegant focus ring that doesn't fight the brand palette. */
+:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
