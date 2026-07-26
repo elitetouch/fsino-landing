@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 /**
  * Global footer. Four columns on desktop:
@@ -42,10 +43,19 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1200px] px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="text-[13px] font-bold tracking-tight text-[var(--color-brand-primary-deep)]">
-              Farm Support Innovation
-            </p>
-            <p className="mt-2 text-[12.5px] leading-relaxed text-[var(--color-brand-muted)]">
+            <div className="flex items-center gap-2.5">
+              <Image
+                src="/fsi-logo.svg"
+                alt=""
+                width={40}
+                height={40}
+                className="h-10 w-10"
+              />
+              <p className="text-[13px] font-bold tracking-tight text-[var(--color-brand-primary-deep)]">
+                Farm Support Innovation
+              </p>
+            </div>
+            <p className="mt-3 text-[12.5px] leading-relaxed text-[var(--color-brand-muted)]">
               An operating system for African farmers. Built in Ogun and
               Lagos. Serving farmers from the Sahel to the Guinea coast.
             </p>

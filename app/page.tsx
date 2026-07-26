@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Bird, Leaf, Droplet, Snowflake, Fish,
   Cpu, LineChart, ShieldCheck, ArrowRight, Sparkles,
@@ -69,38 +70,54 @@ export default function HomePage() {
     <div>
       {/* ─────────────────────────── HERO ─────────────────────────── */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-[1200px] px-4 pb-20 pt-16 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8">
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-primary-deep)]">
-            Farm Support Innovation
-          </p>
-          <h1 className="mt-4 max-w-3xl text-[36px] font-bold leading-[1.05] tracking-tight text-[var(--color-brand-fg)] sm:text-[52px]">
-            An operating system for{' '}
-            <span className="text-[var(--color-brand-primary)]">African farmers</span>.
-          </h1>
-          <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-[var(--color-brand-fg-soft)] sm:text-[17px]">
-            Poultry, greenhouse, smart irrigation, cold chain and aquaculture — one
-            hardware + software platform, priced for the smallholders and
-            mid-scale farms that feed the continent, not just the industrial 1%.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a
-              href={`${tenantUrl}/register`}
-              className="inline-flex items-center gap-2 rounded-xl bg-[var(--color-brand-primary)] px-6 py-3.5 text-[15px] font-bold text-white transition-colors hover:bg-[var(--color-brand-primary-deep)]"
-            >
-              Get started — free to try <ArrowRight className="h-4 w-4" />
-            </a>
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-2 rounded-xl border border-[var(--color-brand-border)] bg-white px-6 py-3.5 text-[15px] font-bold text-[var(--color-brand-primary-deep)] hover:bg-[var(--color-brand-surface-soft)]"
-            >
-              Explore products
-            </Link>
+        <div className="mx-auto grid max-w-[1200px] gap-10 px-4 pb-20 pt-16 sm:px-6 sm:pb-24 sm:pt-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,480px)] lg:items-center lg:gap-12 lg:px-8">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-primary-deep)]">
+              Farm Support Innovation
+            </p>
+            <h1 className="mt-4 max-w-3xl text-[36px] font-bold leading-[1.05] tracking-tight text-[var(--color-brand-fg)] sm:text-[52px]">
+              An operating system for{' '}
+              <span className="text-[var(--color-brand-primary)]">African farmers</span>.
+            </h1>
+            <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-[var(--color-brand-fg-soft)] sm:text-[17px]">
+              Poultry, greenhouse, smart irrigation, cold chain and aquaculture — one
+              hardware + software platform, priced for the smallholders and
+              mid-scale farms that feed the continent, not just the industrial 1%.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href={`${tenantUrl}/register`}
+                className="inline-flex items-center gap-2 rounded-xl bg-[var(--color-brand-primary)] px-6 py-3.5 text-[15px] font-bold text-white transition-colors hover:bg-[var(--color-brand-primary-deep)]"
+              >
+                Get started — free to try <ArrowRight className="h-4 w-4" />
+              </a>
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 rounded-xl border border-[var(--color-brand-border)] bg-white px-6 py-3.5 text-[15px] font-bold text-[var(--color-brand-primary-deep)] hover:bg-[var(--color-brand-surface-soft)]"
+              >
+                Explore products
+              </Link>
+            </div>
+
+            {/* Rebrand strip */}
+            <div className="mt-10 inline-flex items-center gap-2 rounded-full border border-[var(--color-brand-border)] bg-[var(--color-brand-accent)] px-3.5 py-1.5 text-[11.5px] font-semibold text-[var(--color-brand-primary-deep)]">
+              <Sparkles className="h-3 w-3" />
+              Formerly Farmspeak Technology · rebranded to serve more farmers, more crops.
+            </div>
           </div>
 
-          {/* Rebrand strip */}
-          <div className="mt-10 inline-flex items-center gap-2 rounded-full border border-[var(--color-brand-border)] bg-[var(--color-brand-accent)] px-3.5 py-1.5 text-[11.5px] font-semibold text-[var(--color-brand-primary-deep)]">
-            <Sparkles className="h-3 w-3" />
-            Formerly Farmspeak Technology · rebranded to serve more farmers, more crops.
+          {/* Hero visual — FS Manager on mobile. Priority image so
+              it starts fetching immediately for the largest
+              contentful paint. */}
+          <div className="relative mx-auto w-full max-w-[420px] lg:max-w-none">
+            <Image
+              src="/mobilescreen.svg"
+              alt="FS Manager on a mobile phone — dashboard with feed, mortality and weight cards"
+              width={480}
+              height={520}
+              priority
+              className="h-auto w-full drop-shadow-2xl"
+            />
           </div>
         </div>
 
@@ -165,12 +182,16 @@ export default function HomePage() {
               tag="Hardware"
               title="PENKEEP"
               body="Our IoT device sits inside the pen, greenhouse or storage room. Reports temperature, humidity, ammonia and CO₂ every 30 seconds. Controls heaters and fans autonomously. Works over local wifi so it keeps your birds — or your crops — safe even when the internet drops."
+              image="/smartpenzz.svg"
+              imageAlt="PENKEEP pen climate station"
             />
             <FeatureCard
               icon={LineChart}
               tag="Software"
               title="FS Manager"
               body="Turns years of paper record-keeping into structured data that computes feed conversion, mortality trends, vaccination compliance and profit per cycle. Reports export as bank-ready PDFs. Alerts fire when the data drifts from Aviagen, Cobb or Hy-Line standards."
+              image="/trackrecord.svg"
+              imageAlt="FS Manager tracking daily records"
             />
           </div>
 
@@ -190,6 +211,49 @@ export default function HomePage() {
                 expect for the exact age of your birds.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────── DASHBOARD PREVIEW ─────────────────────────── */}
+      <section className="border-t border-[var(--color-brand-border)] bg-white">
+        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+          <div className="max-w-2xl">
+            <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-primary-deep)]">
+              See it in action
+            </p>
+            <h2 className="mt-2 text-[28px] font-bold tracking-tight text-[var(--color-brand-fg)] sm:text-[32px]">
+              Everything you need to run a cycle
+            </h2>
+            <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-brand-fg-soft)]">
+              Feed, water, mortality, weight, vaccines, sales — logged in
+              seconds. Reports export as bank-ready PDFs. The dashboard
+              adapts to what you grow.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              { src: '/DOne.webp', alt: 'Cycle dashboard with feed conversion, mortality and weight cards' },
+              { src: '/DTwo.webp', alt: 'PENKEEP pen climate view — temperature, humidity, ammonia' },
+              { src: '/DThree.webp', alt: 'Vaccination schedule with breed-specific protocol' },
+              { src: '/DFour.webp', alt: 'Reports with bank-ready PDF export' },
+              { src: '/DFive.webp', alt: 'Expenses ledger with per-cycle P&L' },
+              { src: '/DSix.webp', alt: 'Peer benchmarks against past cycles' },
+            ].map((img) => (
+              <div
+                key={img.src}
+                className="overflow-hidden rounded-2xl border border-[var(--color-brand-border)] bg-[var(--color-brand-surface-soft)]"
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={640}
+                  height={400}
+                  className="h-auto w-full"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -250,30 +314,47 @@ function FeatureCard({
   tag,
   title,
   body,
+  image,
+  imageAlt,
 }: {
   icon: React.ElementType;
   tag: string;
   title: string;
   body: string;
+  image?: string;
+  imageAlt?: string;
 }) {
   return (
-    <div className="rounded-2xl border border-[var(--color-brand-border)] bg-white p-6 sm:p-7">
-      <div className="flex items-start gap-3">
-        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--color-brand-accent)] text-[var(--color-brand-primary-deep)]">
-          <Icon className="h-5 w-5" strokeWidth={2.2} />
-        </span>
-        <div>
-          <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[var(--color-brand-primary-deep)]">
-            {tag}
-          </p>
-          <h3 className="mt-0.5 text-[18px] font-bold tracking-tight text-[var(--color-brand-fg)]">
-            {title}
-          </h3>
+    <div className="overflow-hidden rounded-2xl border border-[var(--color-brand-border)] bg-white">
+      {image && (
+        <div className="flex h-44 items-center justify-center bg-gradient-to-br from-[var(--color-brand-accent)] to-white p-6">
+          <Image
+            src={image}
+            alt={imageAlt ?? ''}
+            width={280}
+            height={160}
+            className="h-full w-auto object-contain"
+          />
         </div>
+      )}
+      <div className="p-6 sm:p-7">
+        <div className="flex items-start gap-3">
+          <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--color-brand-accent)] text-[var(--color-brand-primary-deep)]">
+            <Icon className="h-5 w-5" strokeWidth={2.2} />
+          </span>
+          <div>
+            <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[var(--color-brand-primary-deep)]">
+              {tag}
+            </p>
+            <h3 className="mt-0.5 text-[18px] font-bold tracking-tight text-[var(--color-brand-fg)]">
+              {title}
+            </h3>
+          </div>
+        </div>
+        <p className="mt-4 text-[13.5px] leading-relaxed text-[var(--color-brand-fg-soft)]">
+          {body}
+        </p>
       </div>
-      <p className="mt-4 text-[13.5px] leading-relaxed text-[var(--color-brand-fg-soft)]">
-        {body}
-      </p>
     </div>
   );
 }

@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   description:
     'Farm Support Innovation builds hardware + software for African smallholder and mid-scale farms. Poultry, greenhouse, smart irrigation, cold chain and aquaculture — priced for the 99%, not just the 1%.',
   metadataBase: new URL('https://www.fsinnovation.net'),
+  icons: {
+    icon: '/fsi-logo.svg',
+    shortcut: '/fsi-logo.svg',
+    apple: '/fsi-logo.svg',
+  },
   openGraph: {
     title: 'Farm Support Innovation',
     description:

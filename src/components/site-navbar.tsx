@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
@@ -35,12 +36,18 @@ export function SiteNavbar() {
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="flex items-center gap-2 text-[15px] font-bold tracking-tight text-[var(--color-brand-primary-deep)]"
+          aria-label="Farm Support Innovation home"
+          className="flex items-center gap-2.5 text-[15px] font-bold tracking-tight text-[var(--color-brand-primary-deep)]"
         >
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--color-brand-primary)] text-white">
-            <LeafGlyph />
-          </span>
-          <span>Farm Support Innovation</span>
+          <Image
+            src="/fsi-logo.svg"
+            alt=""
+            width={40}
+            height={40}
+            priority
+            className="h-9 w-9"
+          />
+          <span className="hidden sm:inline">Farm Support Innovation</span>
         </Link>
 
         {/* Desktop nav */}
@@ -137,11 +144,3 @@ export function SiteNavbar() {
   );
 }
 
-function LeafGlyph() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" strokeWidth="2.4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96c.8 3 .5 8.36-.5 11.44-1.44 4.4-5.16 6.6-7.7 5.6Z"/>
-      <path d="M2 21c0-3 1.85-5.36 5.08-6"/>
-    </svg>
-  );
-}
