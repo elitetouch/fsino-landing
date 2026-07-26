@@ -258,6 +258,57 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ─────────────────────────── BUILT HERE, TESTED THERE ─────────────────────────── */}
+      <section className="border-t border-[var(--color-brand-border)] bg-[var(--color-brand-surface-soft)]">
+        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+          <div className="max-w-2xl">
+            <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-primary-deep)]">
+              Built here, tested there
+            </p>
+            <h2 className="mt-2 text-[28px] font-bold tracking-tight text-[var(--color-brand-fg)] sm:text-[32px]">
+              A hardware company with a workshop, not a slide deck
+            </h2>
+            <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-brand-fg-soft)]">
+              Every PENKEEP is hand-assembled in our Ogun workshop and
+              field-tested on real farms before it ships. This is what
+              that looks like.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            <VideoCard
+              src="/penkeep-workshop.mp4"
+              poster="/penkeep-installed.jpeg"
+              tag="In our workshop"
+              title="Where every PENKEEP is made"
+              body="Hand-assembled in Ogun. Board bring-up, sensor calibration, firmware flash, packaging — the same three people take every unit end-to-end so nothing ships that we wouldn't install on our own farm."
+            />
+            <VideoCard
+              src="/penkeep-workshop-2.mp4"
+              poster="/farm-view.jpeg"
+              tag="On the farm"
+              title="Installed and running"
+              body="Once a PENKEEP leaves the workshop it goes to a real pen or greenhouse. Every install is documented; every reading feeds back into how the next batch is tuned."
+            />
+          </div>
+
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <PhotoCard
+              src="/penkeep-installed.jpeg"
+              alt="PENKEEP installed inside a working pen"
+              label="Live install"
+              caption="A PENKEEP running on the farm — three heater zones, live climate readings streaming to the dashboard."
+            />
+            <PhotoCard
+              src="/farm-view.jpeg"
+              alt="A field view of a farm we serve"
+              label="The farms we serve"
+              caption="From smallholder pens in Ogun to mid-scale operations across the region — the same platform, priced to fit."
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ─────────────────────────── SOCIAL PROOF ─────────────────────────── */}
       <section className="border-t border-[var(--color-brand-border)] bg-white">
         <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
@@ -356,6 +407,88 @@ function FeatureCard({
         </p>
       </div>
     </div>
+  );
+}
+
+/**
+ * VideoCard — non-autoplay inline video with a poster still.
+ *
+ * Bandwidth-conscious for African users on 3G: `preload="metadata"`
+ * fetches just the first frame + duration so the poster shows
+ * instantly; the video only streams when the farmer clicks play.
+ * Muted by default so a subsequent auto-play (if we ever enable it)
+ * doesn't blast audio.
+ */
+function VideoCard({
+  src,
+  poster,
+  tag,
+  title,
+  body,
+}: {
+  src: string;
+  poster: string;
+  tag: string;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-[var(--color-brand-border)] bg-white">
+      <video
+        className="aspect-video w-full bg-black object-cover"
+        src={src}
+        poster={poster}
+        controls
+        muted
+        playsInline
+        preload="metadata"
+      />
+      <div className="p-6">
+        <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[var(--color-brand-primary-deep)]">
+          {tag}
+        </p>
+        <h3 className="mt-1 text-[16px] font-bold tracking-tight text-[var(--color-brand-fg)]">
+          {title}
+        </h3>
+        <p className="mt-2 text-[13px] leading-relaxed text-[var(--color-brand-fg-soft)]">
+          {body}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function PhotoCard({
+  src,
+  alt,
+  label,
+  caption,
+}: {
+  src: string;
+  alt: string;
+  label: string;
+  caption: string;
+}) {
+  return (
+    <figure className="overflow-hidden rounded-2xl border border-[var(--color-brand-border)] bg-white">
+      <div className="aspect-[16/10] w-full overflow-hidden bg-[var(--color-brand-surface-soft)]">
+        <Image
+          src={src}
+          alt={alt}
+          width={800}
+          height={500}
+          className="h-full w-full object-cover"
+        />
+      </div>
+      <figcaption className="p-5">
+        <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[var(--color-brand-primary-deep)]">
+          {label}
+        </p>
+        <p className="mt-1 text-[12.5px] leading-relaxed text-[var(--color-brand-fg-soft)]">
+          {caption}
+        </p>
+      </figcaption>
+    </figure>
   );
 }
 
