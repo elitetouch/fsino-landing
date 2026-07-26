@@ -149,7 +149,7 @@ export default function HomePage() {
             {VERTICALS.map(({ id, icon: Icon, title, tagline, body }) => (
               <Link
                 key={id}
-                href={`/products#${id}`}
+                href={`/products/${id}`}
                 className="group rounded-2xl border border-[var(--color-brand-border)] bg-white p-6 transition-shadow hover:shadow-lg hover:shadow-[var(--color-brand-primary)]/5"
               >
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-brand-accent)] text-[var(--color-brand-primary-deep)]">

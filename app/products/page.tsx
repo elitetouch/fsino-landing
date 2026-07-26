@@ -168,11 +168,17 @@ export default function ProductsPage() {
                 </ul>
 
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href={`${tenantUrl}/register`}
+                  <Link
+                    href={`/products/${id}`}
                     className="inline-flex items-center gap-1.5 rounded-lg bg-[var(--color-brand-primary)] px-4 py-2.5 text-[13.5px] font-bold text-white hover:bg-[var(--color-brand-primary-deep)]"
                   >
-                    Get started {status === 'Pilot' ? '(join pilot)' : ''} <ArrowRight className="h-3.5 w-3.5" />
+                    Learn more about {title.toLowerCase()} <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                  <a
+                    href={`${tenantUrl}/register`}
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--color-brand-border)] bg-white px-4 py-2.5 text-[13.5px] font-bold text-[var(--color-brand-primary-deep)] hover:bg-[var(--color-brand-surface-soft)]"
+                  >
+                    Get started {status === 'Pilot' ? '(join pilot)' : ''}
                   </a>
                   <Link
                     href="/pricing"

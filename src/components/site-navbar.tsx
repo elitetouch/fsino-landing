@@ -20,6 +20,7 @@ import { Menu, X } from 'lucide-react';
 const LINKS = [
   { href: '/products', label: 'Products' },
   { href: '/pricing', label: 'Pricing' },
+  { href: '/how-we-build', label: 'How we build' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
