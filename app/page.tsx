@@ -217,7 +217,7 @@ export default function HomePage() {
 
       {/* ─────────────────────────── DASHBOARD PREVIEW ─────────────────────────── */}
       <section className="border-t border-[var(--color-brand-border)] bg-white">
-        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-4 pt-16 sm:px-6 sm:pt-20 lg:px-8">
           <div className="max-w-2xl">
             <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-primary-deep)]">
               See it in action
@@ -231,31 +231,21 @@ export default function HomePage() {
               adapts to what you grow.
             </p>
           </div>
-
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              { src: '/DOne.webp', alt: 'Cycle dashboard with feed conversion, mortality and weight cards' },
-              { src: '/DTwo.webp', alt: 'PENKEEP pen climate view — temperature, humidity, ammonia' },
-              { src: '/DThree.webp', alt: 'Vaccination schedule with breed-specific protocol' },
-              { src: '/DFour.webp', alt: 'Reports with bank-ready PDF export' },
-              { src: '/DFive.webp', alt: 'Expenses ledger with per-cycle P&L' },
-              { src: '/DSix.webp', alt: 'Peer benchmarks against past cycles' },
-            ].map((img) => (
-              <div
-                key={img.src}
-                className="overflow-hidden rounded-2xl border border-[var(--color-brand-border)] bg-[var(--color-brand-surface-soft)]"
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={640}
-                  height={400}
-                  className="h-auto w-full"
-                />
-              </div>
-            ))}
-          </div>
         </div>
+
+        {/* Auto-scrolling carousel — full-bleed so it feels like a
+            continuous filmstrip rather than a boxed component. Pauses
+            on hover so a visitor can read a specific frame. */}
+        <DashboardMarquee
+          images={[
+            { src: '/DOne.webp', alt: 'Cycle dashboard with feed conversion, mortality and weight cards' },
+            { src: '/DTwo.webp', alt: 'PENKEEP pen climate view — temperature, humidity, ammonia' },
+            { src: '/DThree.webp', alt: 'Vaccination schedule with breed-specific protocol' },
+            { src: '/DFour.webp', alt: 'Reports with bank-ready PDF export' },
+            { src: '/DFive.webp', alt: 'Expenses ledger with per-cycle P&L' },
+            { src: '/DSix.webp', alt: 'Peer benchmarks against past cycles' },
+          ]}
+        />
       </section>
 
       {/* ─────────────────────────── BUILT HERE, TESTED THERE ─────────────────────────── */}
@@ -406,6 +396,82 @@ function FeatureCard({
           {body}
         </p>
       </div>
+    </div>
+  );
+}
+
+/**
+ * DashboardMarquee — full-bleed right-to-left auto-scrolling
+ * filmstrip of dashboard screenshots.
+ *
+ * Design decisions:
+ *
+ *   - Pure CSS keyframes (no JS timer, no scroll libraries). One
+ *     `translateX(-50%)` animation on a track that contains TWO
+ *     copies of the image list back-to-back. Because copy 2 starts
+ *     exactly where copy 1 began, the loop is seamless — the eye
+ *     never catches a jump.
+ *
+ *   - Pauses on hover so a visitor who wants to read a specific
+ *     screenshot can. Also pauses on focus-within for keyboard
+ *     users tabbing through.
+ *
+ *   - Respects prefers-reduced-motion: for users who've asked their
+ *     OS not to auto-animate content, the strip goes static
+ *     (visible but not moving). WCAG compliance + accessibility
+ *     without extra work.
+ *
+ *   - Full-bleed with a horizontal padding-left gutter on the first
+ *     card so the strip aligns visually with the section header
+ *     above but still runs off the right edge, signalling "keep
+ *     scrolling".
+ */
+function DashboardMarquee({ images }: { images: Array<{ src: string; alt: string }> }) {
+  return (
+    <div
+      className="marquee-wrap group mt-10 overflow-hidden py-4"
+      aria-label="Dashboard screenshots"
+      role="region"
+    >
+      <div className="marquee-track flex w-max gap-4 pl-4 sm:pl-6 lg:pl-8 group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]">
+        {/* Rendered twice — copy 1 for the initial view, copy 2 to
+            fill the space vacated as copy 1 slides off screen. The
+            animation ends exactly when copy 2 lines up where copy 1
+            started, so the loop is invisible. */}
+        {[...images, ...images].map((img, i) => (
+          <div
+            key={`${img.src}-${i}`}
+            className="shrink-0 overflow-hidden rounded-2xl border border-[var(--color-brand-border)] bg-[var(--color-brand-surface-soft)]"
+            style={{ width: 'min(420px, 80vw)' }}
+            aria-hidden={i >= images.length ? true : undefined}
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              width={640}
+              height={400}
+              className="h-auto w-full"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Scoped keyframes — matches the doubled-track pattern above.
+          40s per full cycle keeps it comfortably slow; anything
+          faster and it reads as a jumpy attention-grab rather than
+          product proof. */}
+      <style>{`
+        .marquee-track {
+          animation: dashboard-marquee 40s linear infinite;
+        }
+        @keyframes dashboard-marquee {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track { animation: none; }
+        }
+      `}</style>
     </div>
   );
 }
