@@ -15,7 +15,7 @@ export default function PoultryPage() {
       title="Poultry"
       tagline="Where we started; still where most of our farmers are."
       intro="Broilers, layers, dual-purpose. Whether you place 200 birds or 20,000, PENKEEP watches the pen and FS Manager keeps the records. Every metric grades against Ross 308, Cobb 500, Hy-Line Brown, Lohmann or ISA targets for the exact age of your birds."
-      heroImage="/mobilescreen.svg"
+      heroImage="/mobilescreen.png"
       heroImageAlt="FS Manager cycle dashboard for a Ross 308 broiler flock"
       hardware={{
         device: 'PENKEEP pen climate station',
