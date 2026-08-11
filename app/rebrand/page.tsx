@@ -2,297 +2,264 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  ArrowRight, ShieldCheck, Mail, MoveRight, Sparkles, Sprout,
+  ArrowRight, Bird, Cpu, Droplets, Fish, Leaf, ShieldCheck, Snowflake, Users,
+  Wallet, KeyRound, MoveRight,
 } from 'lucide-react';
 
+/**
+ * /rebrand — mirrors the content of the legacy farmspeak.net/rebrand
+ * page 1:1 so the "Read the story →" CTA in every marketing email now
+ * resolves on fsinnovation.net. Uses this site's shared nav + footer
+ * (SiteNavbar / SiteFooter wrap this via app/layout.tsx).
+ *
+ * Source of truth for copy is the rendered SSR of
+ * https://farmspeak.net/rebrand — do not paraphrase without checking there.
+ */
 export const metadata: Metadata = {
-  title: 'We are now Farm Support Innovation',
+  title: 'Farmspeak is now Farm Support Innovation',
   description:
-    'Farmspeak Technology is now Farm Support Innovation. Same team, same product, a name that matches the work. Read the story.',
+    "We've grown from a poultry-only tool into an operating system for African farmers — poultry, greenhouse, smart irrigation, cold chain and aquaculture. Same team, new home.",
+  alternates: { canonical: 'https://www.fsinnovation.net/rebrand' },
   openGraph: {
-    title: 'We are now Farm Support Innovation (formerly Farmspeak)',
-    description:
-      'Same team, same product, a name that matches the work. Read the story.',
+    title: 'Farmspeak is now Farm Support Innovation',
+    description: 'Same team, new home, more products. Visit fsinnovation.net.',
   },
 };
 
-/**
- * /rebrand — the founder story of why we changed the name.
- *
- * Structure:
- *   1. Hero + logo bridge (Farmspeak → FSI, "we grew up")
- *   2. The story (2–3 short paragraphs, first-person)
- *   3. What changes / what stays (side-by-side cards)
- *   4. "You don't need to do anything" callout
- *   5. FAQ (the four questions we actually get)
- *   6. Contact strip
- */
 export default function RebrandPage() {
   return (
     <div>
       {/* ─────────────────── HERO ─────────────────── */}
-      <section className="border-b border-[var(--color-brand-border)] bg-gradient-to-b from-[var(--color-brand-accent)]/40 to-white">
-        <div className="mx-auto max-w-[1000px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-primary-deep)]">
-            A note from the founders
+      <section className="border-b border-[var(--color-brand-border)] bg-gradient-to-b from-[var(--color-brand-accent)]/50 to-white">
+        <div className="mx-auto max-w-[1100px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--color-brand-primary-deep)]">
+            A new chapter
           </p>
-          <h1 className="mt-3 text-[32px] font-bold leading-tight tracking-tight text-[var(--color-brand-fg)] sm:text-[52px]">
-            Same team. <span className="text-[var(--color-brand-primary-deep)]">New name.</span>
+          <h1 className="mt-3 max-w-3xl text-[34px] font-bold leading-[1.08] tracking-tight text-[var(--color-brand-fg)] sm:text-[52px]">
+            Farmspeak Technology is now{' '}
+            <span className="text-[var(--color-brand-primary-deep)]">Farm Support Innovation</span>
           </h1>
-          <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-[var(--color-brand-fg-soft)]">
-            <strong>Farmspeak Technology</strong> is now{' '}
-            <strong>Farm Support Innovation</strong>. Same team, same product,
-            a name that finally matches the work.
+          <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-[var(--color-brand-fg-soft)] sm:text-[17px]">
+            We grew from a poultry-only tool into an operating system for
+            African farmers. Poultry, greenhouse, smart irrigation, cold chain,
+            aquaculture. The same team you know, running a broader mission
+            with a name that fits.
           </p>
 
-          {/* Logo bridge */}
-          <div className="mt-10 rounded-2xl border border-[var(--color-brand-border)] bg-white p-6 shadow-sm sm:p-10">
-            <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-10">
-              <div className="flex flex-col items-center">
-                <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--color-brand-muted)]">
-                  Before
-                </p>
-                <div className="opacity-60">
-                  <Image
-                    src="/farmspeak-logo.svg"
-                    alt="Farmspeak Technology"
-                    width={140}
-                    height={90}
-                    className="h-auto w-[140px]"
-                    priority
-                  />
-                </div>
-              </div>
-
+          {/* Logo bridge card */}
+          <div className="mt-10 rounded-[20px] border border-[#d9e8d5] bg-gradient-to-br from-[#ecf6ea] to-white p-7 shadow-sm sm:p-10">
+            <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:justify-center sm:gap-12">
+              <Image
+                src="/farmspeak-logo-tagline.png"
+                alt="Farmspeak Technology"
+                width={220}
+                height={164}
+                className="h-auto w-[180px] opacity-70 sm:w-[220px]"
+                priority
+              />
               <MoveRight
                 aria-hidden
-                className="h-8 w-8 shrink-0 text-[var(--color-brand-primary)] sm:h-10 sm:w-10"
-                strokeWidth={2.2}
+                className="h-9 w-9 shrink-0 text-[var(--color-brand-primary)] sm:h-11 sm:w-11"
+                strokeWidth={2.3}
               />
-
-              <div className="flex flex-col items-center">
-                <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--color-brand-primary-deep)]">
-                  Now
-                </p>
-                <Image
-                  src="/fsi-logo.svg"
-                  alt="Farm Support Innovation"
-                  width={140}
-                  height={135}
-                  className="h-auto w-[140px]"
-                  priority
-                />
-              </div>
+              <Image
+                src="/fsi-logo.svg"
+                alt="Farm Support Innovation"
+                width={200}
+                height={193}
+                className="h-auto w-[160px] sm:w-[200px]"
+                priority
+              />
             </div>
-            <p className="mt-8 text-center text-[13px] font-bold uppercase tracking-[0.24em] text-[var(--color-brand-primary-deep)]">
-              We grew up.
+            <p className="mt-8 text-center text-[12px] font-bold uppercase tracking-[0.28em] text-[var(--color-brand-primary-deep)]">
+              We grew up
             </p>
+          </div>
+
+          {/* CTA row */}
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <Link
+              href="https://www.fsinnovation.net"
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--color-brand-primary)] px-6 py-3 text-[14px] font-bold text-white shadow-sm transition hover:bg-[var(--color-brand-primary-deep)]"
+            >
+              Visit our new home
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="https://web.fsinnovation.net/login"
+              className="inline-flex items-center gap-2 rounded-full border border-[var(--color-brand-border)] bg-white px-6 py-3 text-[14px] font-bold text-[var(--color-brand-fg)] transition hover:border-[var(--color-brand-primary)] hover:text-[var(--color-brand-primary-deep)]"
+            >
+              Existing user? Log in
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ─────────────────── STORY ─────────────────── */}
-      <section className="mx-auto max-w-[760px] space-y-6 px-4 py-16 sm:px-6 lg:px-8">
-        <h2 className="text-[24px] font-bold tracking-tight text-[var(--color-brand-fg)] sm:text-[28px]">
-          Why we changed the name.
+      {/* ─────────────────── WHAT STAYS THE SAME ─────────────────── */}
+      <section className="mx-auto max-w-[1100px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <p className="text-[10.5px] font-bold uppercase tracking-[0.22em] text-[var(--color-brand-primary-deep)]">
+          You already know us
+        </p>
+        <h2 className="mt-2 max-w-2xl text-[26px] font-bold tracking-tight text-[var(--color-brand-fg)] sm:text-[32px]">
+          What stays the same
         </h2>
 
-        <p className="text-[16px] leading-relaxed text-[var(--color-brand-fg)]">
-          When we started as <strong>Farmspeak Technology</strong>, we were
-          three people building a temperature sensor for a single poultry
-          pen. The name said &ldquo;farm&rdquo; and &ldquo;speak&rdquo;
-          because our device literally spoke pen conditions back to the
-          farmer&apos;s phone.
-        </p>
-
-        <p className="text-[16px] leading-relaxed text-[var(--color-brand-fg)]">
-          Six years later, the work has widened. Farmers use us for feed
-          conversion, mortality tracking, vaccination reminders, cost
-          projection, PDF reports for banks, and pen climate — across
-          poultry, greenhouses, irrigation, cold chain and aquaculture. The
-          hardware speaks; the software listens; the farmer decides. We
-          support the whole farm, end to end.
-        </p>
-
-        <p className="text-[16px] leading-relaxed text-[var(--color-brand-fg)]">
-          The old name outgrew the work. So we&apos;re now{' '}
-          <strong>Farm Support Innovation (FSI)</strong> — a name that
-          finally matches what we actually do.
-        </p>
-
-        <p className="text-[16px] leading-relaxed text-[var(--color-brand-fg)]">
-          Nothing else changes. Same team, same product, same data, same
-          people you already talk to. You&apos;ll notice the new logo on
-          your dashboard, the new email address on our replies, and the new
-          domain on our website. That&apos;s it.
-        </p>
-      </section>
-
-      {/* ─────────────────── CHANGES / STAYS ─────────────────── */}
-      <section className="border-y border-[var(--color-brand-border)] bg-[var(--color-brand-accent)]/30">
-        <div className="mx-auto grid max-w-[1000px] gap-4 px-4 py-16 sm:grid-cols-2 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-[var(--color-brand-border)] bg-white p-6 sm:p-7">
-            <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-primary-deep)]">
-              What changes
-            </p>
-            <ul className="mt-4 space-y-3">
-              <ChangeRow label="New name" body="Farmspeak Technology → Farm Support Innovation (FSI)" />
-              <ChangeRow label="New logo" body="Fresh mark, same green heritage" />
-              <ChangeRow label="New website" body="fsinnovation.net (farmspeak.net redirects here)" />
-              <ChangeRow label="New emails" body="Replies come from @fsinnovation.net" />
-            </ul>
-          </div>
-
-          <div className="rounded-2xl border border-[var(--color-brand-primary)]/30 bg-[var(--color-brand-accent)] p-6 sm:p-7">
-            <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-primary-deep)]">
-              What stays the same
-            </p>
-            <ul className="mt-4 space-y-3">
-              <StayRow label="Your account" body="Login, permissions, everything you already set up" />
-              <StayRow label="Your data" body="Every record, cycle, report — untouched" />
-              <StayRow label="Your PENKEEP device" body="Works exactly as before, no reflash needed" />
-              <StayRow label="The people" body="Same founders, same support team, same phone numbers" />
-            </ul>
-          </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <StaysCard
+            icon={ShieldCheck}
+            title="Your data"
+            body="Every flock, record, PDF and PENKEEP reading you've logged with us moves across untouched."
+          />
+          <StaysCard
+            icon={KeyRound}
+            title="Your login"
+            body="Same email, same password. Log in at web.fsinnovation.net exactly the way you always did."
+          />
+          <StaysCard
+            icon={Users}
+            title="Your team"
+            body="Founders, engineers, support and the people who visit your farm, none of that changed. Just the name on the wall."
+          />
+          <StaysCard
+            icon={Wallet}
+            title="Your tokens and subscriptions"
+            body="Wallet balance, active cycles, PENKEEP subscriptions — all preserved."
+          />
         </div>
       </section>
 
-      {/* ─────────────────── NO ACTION NEEDED ─────────────────── */}
-      <section className="mx-auto max-w-[760px] px-4 py-16 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-[var(--color-brand-border)] bg-white p-6 sm:p-8">
-          <div className="flex items-start gap-4">
-            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--color-brand-accent)] text-[var(--color-brand-primary-deep)]">
-              <ShieldCheck className="h-5 w-5" strokeWidth={2.2} />
-            </span>
-            <div>
-              <h3 className="text-[18px] font-bold tracking-tight text-[var(--color-brand-fg)]">
-                You don&apos;t need to do anything.
-              </h3>
-              <p className="mt-2 text-[14.5px] leading-relaxed text-[var(--color-brand-fg-soft)]">
-                Your login still works. Your farms, flocks, records, reports
-                and devices work exactly as before. Old links to{' '}
-                <em>farmspeak.net</em> redirect to the new site. If someone
-                on your team asks whether Farmspeak is gone — the answer is
-                no. We just grew up.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────── FAQ ─────────────────── */}
-      <section className="border-t border-[var(--color-brand-border)] bg-white">
-        <div className="mx-auto max-w-[820px] px-4 py-16 sm:px-6 lg:px-8">
-          <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-primary-deep)]">
-            Frequently asked
+      {/* ─────────────────── WHAT'S NEW ─────────────────── */}
+      <section className="border-y border-[var(--color-brand-border)] bg-[var(--color-brand-accent)]/25">
+        <div className="mx-auto max-w-[1100px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+          <p className="text-[10.5px] font-bold uppercase tracking-[0.22em] text-[var(--color-brand-primary-deep)]">
+            What&apos;s new
           </p>
-          <h2 className="mt-2 text-[24px] font-bold tracking-tight text-[var(--color-brand-fg)] sm:text-[28px]">
-            The four questions we get.
+          <h2 className="mt-2 max-w-2xl text-[26px] font-bold tracking-tight text-[var(--color-brand-fg)] sm:text-[32px]">
+            Five verticals under one roof
           </h2>
+          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[var(--color-brand-fg-soft)]">
+            The PENKEEP device and FS Manager software you know now serve a
+            wider range of African farms:
+          </p>
 
-          <div className="mt-8 space-y-4">
-            <Faq
-              q="Do I need to re-register or migrate anything?"
-              a="No. Your account, farms, records, cycles, PENKEEP devices and reports work exactly as before. Nothing to migrate, nothing to re-verify."
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <VerticalCard
+              icon={Bird}
+              title="Poultry farms"
+              body="PENKEEP climate stations + FS Manager records. Where we started, still where most of our farmers are."
             />
-            <Faq
-              q="Are the farmspeak.net links still valid?"
-              a="Yes — farmspeak.net now redirects to fsinnovation.net. Every deep link (login page, help articles, blog posts) resolves to the new equivalent. If you have documentation or QR codes with the old URL, they still work."
+            <VerticalCard
+              icon={Leaf}
+              title="Greenhouses"
+              body="The same PENKEEP hardware, tuned for horticulture. Monitoring and control of humidity, temperature and ventilation for tomatoes, peppers and leafy greens."
             />
-            <Faq
-              q="Is my PENKEEP still supported?"
-              a="Yes, fully. The device firmware is untouched by this rebrand. Future OTA firmware updates ship exactly as before. Your device will keep its name as PENKEEP — that hasn't changed."
+            <VerticalCard
+              icon={Droplets}
+              title="Smart irrigation"
+              body="Soil-moisture sensors + scheduled valves. Water the crop when it needs it, not when a clock says to."
             />
-            <Faq
-              q="Who owns the company now?"
-              a="The same founders and team. Farm Support Innovation is the same legal entity, same team, same investors — just operating under a new brand. Nothing about ownership, direction or people has changed."
+            <VerticalCard
+              icon={Snowflake}
+              title="Cold chain facilities"
+              body="Temperature monitoring for storage rooms and reefer trucks. Fewer spoiled shipments; every breach recorded."
+            />
+            <VerticalCard
+              icon={Fish}
+              title="Aquaculture"
+              body="Water quality, dissolved oxygen and feed cycle records for fish ponds and RAS systems."
             />
           </div>
         </div>
       </section>
 
-      {/* ─────────────────── CONTACT ─────────────────── */}
-      <section className="border-t border-[var(--color-brand-border)] bg-[var(--color-brand-accent)]/30">
-        <div className="mx-auto max-w-[820px] px-4 py-16 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-[var(--color-brand-border)] bg-white p-6 sm:p-8">
-            <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-start gap-3">
-                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--color-brand-accent)] text-[var(--color-brand-primary-deep)]">
-                  <Mail className="h-5 w-5" strokeWidth={2.2} />
-                </span>
-                <div>
-                  <h3 className="text-[16px] font-bold tracking-tight text-[var(--color-brand-fg)]">
-                    Still have questions?
-                  </h3>
-                  <p className="mt-1 text-[13.5px] text-[var(--color-brand-fg-soft)]">
-                    Same inboxes, same people. Just hit reply to any of our
-                    emails, or write to us directly.
-                  </p>
-                </div>
-              </div>
-              <Link
-                href="mailto:hello@fsinnovation.net"
-                className="inline-flex items-center gap-2 rounded-full bg-[var(--color-brand-primary)] px-5 py-2.5 text-[13.5px] font-bold text-white shadow-sm transition hover:bg-[var(--color-brand-primary-deep)]"
-              >
-                hello@fsinnovation.net
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </div>
-
-          <p className="mt-8 flex items-center justify-center gap-2 text-center text-[12px] text-[var(--color-brand-muted)]">
-            <Sprout className="h-3.5 w-3.5 text-[var(--color-brand-primary-deep)]" />
-            Thanks for growing with us.
-            <span className="opacity-70">— The FSI team (formerly Farmspeak)</span>
+      {/* ─────────────────── BOOKMARK CTA ─────────────────── */}
+      <section className="mx-auto max-w-[1100px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="rounded-[20px] border border-[#d9e8d5] bg-gradient-to-br from-[#ecf6ea] to-white p-8 sm:p-12">
+          <p className="text-[10.5px] font-bold uppercase tracking-[0.22em] text-[var(--color-brand-primary-deep)]">
+            Bookmark our new home
           </p>
+          <h2 className="mt-2 text-[28px] font-bold tracking-tight text-[var(--color-brand-fg)] sm:text-[36px]">
+            fsinnovation.net
+          </h2>
+          <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-[var(--color-brand-fg-soft)]">
+            Everything you loved about farmspeak.net, plus what we&apos;ve
+            built since; pricing, product deep dives for all five verticals,
+            and the same support team ready to answer questions.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <Link
+              href="https://www.fsinnovation.net"
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--color-brand-primary)] px-6 py-3 text-[14px] font-bold text-white shadow-sm transition hover:bg-[var(--color-brand-primary-deep)]"
+            >
+              Take me there
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-full border border-[var(--color-brand-border)] bg-white px-6 py-3 text-[14px] font-bold text-[var(--color-brand-fg)] transition hover:border-[var(--color-brand-primary)] hover:text-[var(--color-brand-primary-deep)]"
+            >
+              Talk to support
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
     </div>
   );
 }
 
-/* ─────────────────── row helpers ─────────────────── */
+/* ─────────────────── card helpers ─────────────────── */
 
-function ChangeRow({ label, body }: { label: string; body: string }) {
+function StaysCard({
+  icon: Icon,
+  title,
+  body,
+}: {
+  icon: React.ElementType;
+  title: string;
+  body: string;
+}) {
   return (
-    <li className="flex items-start gap-2.5">
-      <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-brand-primary-deep)]" strokeWidth={2.4} />
-      <div className="text-[13.5px] leading-relaxed">
-        <span className="font-bold text-[var(--color-brand-fg)]">{label}</span>{' '}
-        <span className="text-[var(--color-brand-fg-soft)]">— {body}</span>
+    <div className="rounded-2xl border border-[var(--color-brand-border)] bg-white p-5 sm:p-6">
+      <div className="flex items-start gap-3">
+        <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--color-brand-accent)] text-[var(--color-brand-primary-deep)]">
+          <Icon className="h-4 w-4" strokeWidth={2.3} />
+        </span>
+        <div>
+          <h3 className="text-[15px] font-bold tracking-tight text-[var(--color-brand-fg)]">
+            {title}
+          </h3>
+          <p className="mt-1.5 text-[13.5px] leading-relaxed text-[var(--color-brand-fg-soft)]">
+            {body}
+          </p>
+        </div>
       </div>
-    </li>
+    </div>
   );
 }
 
-function StayRow({ label, body }: { label: string; body: string }) {
+function VerticalCard({
+  icon: Icon,
+  title,
+  body,
+}: {
+  icon: React.ElementType;
+  title: string;
+  body: string;
+}) {
   return (
-    <li className="flex items-start gap-2.5">
-      <ShieldCheck
-        className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-brand-primary-deep)]"
-        strokeWidth={2.4}
-      />
-      <div className="text-[13.5px] leading-relaxed">
-        <span className="font-bold text-[var(--color-brand-fg)]">{label}</span>{' '}
-        <span className="text-[var(--color-brand-fg-soft)]">— {body}</span>
-      </div>
-    </li>
-  );
-}
-
-function Faq({ q, a }: { q: string; a: string }) {
-  return (
-    <details className="group rounded-xl border border-[var(--color-brand-border)] bg-white p-5 open:shadow-sm">
-      <summary className="flex cursor-pointer items-center justify-between gap-4 text-[15px] font-bold text-[var(--color-brand-fg)] [&::-webkit-details-marker]:hidden">
-        {q}
-        <ArrowRight
-          className="h-4 w-4 shrink-0 text-[var(--color-brand-primary-deep)] transition-transform group-open:rotate-90"
-          strokeWidth={2.4}
-        />
-      </summary>
-      <p className="mt-3 text-[14px] leading-relaxed text-[var(--color-brand-fg-soft)]">
-        {a}
+    <div className="rounded-2xl border border-[var(--color-brand-border)] bg-white p-5 sm:p-6">
+      <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-brand-accent)] text-[var(--color-brand-primary-deep)]">
+        <Icon className="h-5 w-5" strokeWidth={2.3} />
+      </span>
+      <h3 className="mt-4 text-[16px] font-bold tracking-tight text-[var(--color-brand-fg)]">
+        {title}
+      </h3>
+      <p className="mt-1.5 text-[13.5px] leading-relaxed text-[var(--color-brand-fg-soft)]">
+        {body}
       </p>
-    </details>
+    </div>
   );
 }
