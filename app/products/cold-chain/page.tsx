@@ -15,8 +15,8 @@ export default function ColdChainPage() {
       title="Cold chain"
       tagline="Fewer spoiled shipments. Every breach recorded."
       intro="Post-harvest loss is where African smallholder profit disappears. PENKEEP watches every cold room and reefer truck around the clock, alerts you the moment temperature drifts, and hands you a bank-ready breach report at the end of the month — the exact evidence an insurance claim or a buyer audit needs."
-      heroImage="/mobilescreen.svg"
-      heroImageAlt="FS Manager showing cold-room temperature over time"
+      heroImage="/products-hero-composite.png"
+      heroImageAlt="PENKEEP cold-chain station with solar panel and Patented badge, alongside FS Manager reports on mobile, desktop and tablet"
       hardware={{
         device: 'PENKEEP cold-chain station',
         body: 'Waterproof probe inside the cold room or reefer body, controller mounted on the exterior wall. Reports temperature every 30 seconds. Battery + solar so a power cut doesn\'t take monitoring offline with the compressor.',

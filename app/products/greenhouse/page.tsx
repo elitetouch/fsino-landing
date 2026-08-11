@@ -15,8 +15,8 @@ export default function GreenhousePage() {
       title="Greenhouses"
       tagline="A hot afternoon doesn't have to cost you a harvest."
       intro="The same PENKEEP hardware, tuned for horticulture. Watches temperature, humidity and CO₂ inside the tunnel and switches fans, foggers and shade automatically. FS Manager logs plantings, feedings, sprays and harvests so a season's-worth of yield decisions is one PDF away."
-      heroImage="/mobilescreen.svg"
-      heroImageAlt="FS Manager showing greenhouse climate dashboard"
+      heroImage="/products-hero-composite.png"
+      heroImageAlt="PENKEEP greenhouse climate station with solar panel and Patented badge, alongside FS Manager reports on mobile, desktop and tablet"
       hardware={{
         device: 'PENKEEP greenhouse controller',
         body: 'Same PENKEEP board, tuned firmware. Reports canopy temperature, humidity and CO₂ every 30 seconds. Controls exhaust fans, foggers and shade nets autonomously. Multiple stations per tunnel for zoned control.',
