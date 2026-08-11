@@ -15,8 +15,8 @@ export default function AquaculturePage() {
       title="Aquaculture"
       tagline="Catch problems in the pond before they cost you a harvest."
       intro="Catfish die fast when water goes bad. PENKEEP watches dissolved oxygen, temperature, pH and ammonia around the clock, alerts you at the first drift, and controls aerators automatically. FS Manager logs feedings, mortalities and sales so you know per-pond FCR and margin at harvest — not just at your buyer\'s scale."
-      heroImage="/mobilescreen.svg"
-      heroImageAlt="FS Manager showing pond water quality readings"
+      heroImage="/irrigation-hero.png"
+      heroImageAlt="PENKEEP station with solar panel and Patented badge, alongside FS Manager pond water-quality reports on mobile, desktop and tablet"
       hardware={{
         device: 'PENKEEP aqua controller',
         body: 'Waterproof multi-parameter probe suspended in the pond. Reports dissolved oxygen, temperature, pH and ammonia every 30 seconds. Switches paddle-wheel aerators or air pumps autonomously when DO drops.',
