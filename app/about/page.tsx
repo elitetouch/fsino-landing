@@ -166,7 +166,7 @@ export default function AboutPage() {
                 Built in Ogun and Lagos. Serving farmers from the Sahel
                 to the Guinea coast. Formerly Farmspeak Technology —{' '}
                 <Link
-                  href="https://www.farmspeak.net/rebrand"
+                  href="/rebrand"
                   className="font-semibold text-[var(--color-brand-primary-deep)] hover:underline"
                 >
                   read the rebrand story
