@@ -268,7 +268,7 @@ export default function HomePage() {
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             <VideoCard
               src="/penkeep-workshop.mp4"
-              poster="/penkeep-installed.jpeg"
+              poster="/penkeep-workshop-poster.jpg"
               tag="In our workshop"
               title="Where every PENKEEP is made"
               body="Hand-assembled in Ogun. Board bring-up, sensor calibration, firmware flash, packaging — the same three people take every unit end-to-end so nothing ships that we wouldn't install on our own farm."
