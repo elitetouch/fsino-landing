@@ -15,8 +15,8 @@ export default function PoultryPage() {
       title="Poultry"
       tagline="Where we started; still where most of our farmers are."
       intro="Broilers, layers, dual-purpose. Whether you place 200 birds or 20,000, PENKEEP watches the pen and FS Manager keeps the records. Every metric grades against Ross 308, Cobb 500, Hy-Line Brown, Lohmann or ISA targets for the exact age of your birds."
-      heroImage="/mobilescreen.png"
-      heroImageAlt="FS Manager cycle dashboard for a Ross 308 broiler flock"
+      heroImage="/poultry-hero.png"
+      heroImageAlt="PENKEEP poultry station with solar panel and Patented badge, alongside FS Manager cycle dashboard on mobile, desktop and tablet"
       hardware={{
         device: 'PENKEEP pen climate station',
         body: 'Sits inside the pen and reports temperature, humidity, ammonia and CO₂ every 30 seconds. Three heater zones with autonomous switching so a cold night doesn\'t catch you asleep. Works over local wifi — no internet, still safe.',
