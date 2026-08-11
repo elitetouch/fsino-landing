@@ -111,10 +111,10 @@ export default function HomePage() {
               contentful paint. */}
           <div className="relative mx-auto w-full max-w-[420px] lg:max-w-none">
             <Image
-              src="/mobilescreen.svg"
-              alt="FS Manager on a mobile phone — dashboard with feed, mortality and weight cards"
-              width={480}
-              height={520}
+              src="/mobilescreen.png"
+              alt="FS Manager on a mobile phone alongside a PENKEEP climate station — dashboard with feed, mortality and weight cards"
+              width={1296}
+              height={1182}
               priority
               className="h-auto w-full drop-shadow-2xl"
             />
