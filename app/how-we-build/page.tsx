@@ -130,7 +130,7 @@ export default function HowWeBuildPage() {
             />
             <VideoCard
               src="/penkeep-workshop-2.mp4"
-              poster="/farm-view.jpeg"
+              poster="/penkeep-farm-poster.jpg"
               tag="On the farm"
               title="Installed and running"
               body="Once a PENKEEP leaves the workshop it goes to a real pen or greenhouse. Every install is documented; every reading tunes the next batch."
