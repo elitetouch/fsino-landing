@@ -1,15 +1,51 @@
 import type { Metadata } from 'next';
+import { BreadcrumbJsonLd, ProductJsonLd } from '@/components/seo/json-ld';
 import { Droplet, LineChart } from 'lucide-react';
 import { ProductDetailLayout } from '@/components/product-detail-layout';
 
 export const metadata: Metadata = {
-  title: 'Smart irrigation',
+  title: 'Smart Irrigation IoT · Soil-Moisture Sensors + Scheduled Valves',
   description:
-    'Soil-moisture sensors + scheduled valves. Water when the crop needs it, not when a clock says to. Cuts water bills without cutting yield.',
+    'Smart irrigation IoT for African farms. PENKEEP soil-moisture sensors and scheduled valves water the crop when it needs it, not when a clock says to. Precision irrigation that cuts water bills without cutting yield.',
+  keywords: [
+    'smart irrigation IoT',
+    'soil moisture sensor Nigeria',
+    'IoT irrigation system Africa',
+    'precision irrigation smallholder',
+    'automated drip irrigation Nigeria',
+    'water management farm software',
+    'remote sensing agriculture',
+    'PENKEEP',
+    'FS Manager',
+  ],
+  alternates: { canonical: 'https://www.fsinnovation.net/products/irrigation' },
+  openGraph: {
+    title: 'Smart Irrigation IoT — Precision Water for African Farms',
+    description:
+      'PENKEEP soil-moisture sensors + scheduled valves. Water when the crop needs it, not when a clock says to.',
+    url: 'https://www.fsinnovation.net/products/irrigation',
+    images: ['/irrigation-hero.png'],
+    type: 'website',
+  },
 };
 
 export default function IrrigationPage() {
   return (
+    <>
+      <ProductJsonLd
+        name="PENKEEP + FS Manager for Smart Irrigation"
+        description="Smart irrigation IoT: PENKEEP soil-moisture sensors and scheduled valves. Water the crop when it needs it, not when a clock says to. Cuts water bills without cutting yield."
+        image="/irrigation-hero.png"
+        slug="irrigation"
+        category="Smart Irrigation IoT"
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Products', url: '/products' },
+          { name: 'Smart irrigation', url: '/products/irrigation' },
+        ]}
+      />
     <ProductDetailLayout
       eyebrow="For open-field crops"
       title="Smart irrigation"
@@ -94,5 +130,6 @@ export default function IrrigationPage() {
         },
       ]}
     />
+    </>
   );
 }

@@ -1,15 +1,52 @@
 import type { Metadata } from 'next';
+import { BreadcrumbJsonLd, ProductJsonLd } from '@/components/seo/json-ld';
 import { Snowflake, LineChart } from 'lucide-react';
 import { ProductDetailLayout } from '@/components/product-detail-layout';
 
 export const metadata: Metadata = {
-  title: 'Cold chain facilities',
+  title: 'Smart Cold Chain IoT · Temperature Monitoring for Cold Rooms & Reefers',
   description:
-    'Temperature monitoring for storage rooms and reefer trucks. Fewer spoiled shipments; every breach recorded for insurance and compliance.',
+    'Smart cold chain IoT for cold rooms, reefer trucks and pharma storage across Africa. PENKEEP continuous temperature monitoring, breach alerts, and audit-grade compliance reports for insurance, food safety and pharmaceutical certification.',
+  keywords: [
+    'smart cold chain IoT',
+    'cold room temperature monitoring',
+    'reefer truck monitoring Africa',
+    'cold chain compliance report',
+    'pharma cold chain monitoring',
+    'food safety temperature logger',
+    'HACCP compliance sensor',
+    'vaccine cold chain Africa',
+    'PENKEEP',
+    'FS Manager',
+  ],
+  alternates: { canonical: 'https://www.fsinnovation.net/products/cold-chain' },
+  openGraph: {
+    title: 'Smart Cold Chain IoT — Temperature Monitoring for Africa',
+    description:
+      'PENKEEP continuous temperature monitoring for cold rooms, reefer trucks and pharma storage. Breach alerts + audit-grade compliance reports.',
+    url: 'https://www.fsinnovation.net/products/cold-chain',
+    images: ['/products-hero-composite.png'],
+    type: 'website',
+  },
 };
 
 export default function ColdChainPage() {
   return (
+    <>
+      <ProductJsonLd
+        name="PENKEEP + FS Manager for Cold Chain"
+        description="Smart cold chain IoT: PENKEEP continuous temperature monitoring for cold rooms, reefer trucks and pharma storage. Breach alerts + audit-grade compliance reports for insurance, food safety and pharmaceutical certification."
+        image="/products-hero-composite.png"
+        slug="cold-chain"
+        category="Smart Cold Chain IoT"
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Products', url: '/products' },
+          { name: 'Cold chain', url: '/products/cold-chain' },
+        ]}
+      />
     <ProductDetailLayout
       eyebrow="For cold storage + reefer transport"
       title="Cold chain"
@@ -94,5 +131,6 @@ export default function ColdChainPage() {
         },
       ]}
     />
+    </>
   );
 }

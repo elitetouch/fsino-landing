@@ -1,15 +1,52 @@
 import type { Metadata } from 'next';
+import { BreadcrumbJsonLd, ProductJsonLd } from '@/components/seo/json-ld';
 import { Cpu, LineChart } from 'lucide-react';
 import { ProductDetailLayout } from '@/components/product-detail-layout';
 
 export const metadata: Metadata = {
-  title: 'Greenhouses',
+  title: 'Smart Greenhouse IoT · Climate Control for African Growers',
   description:
-    'PENKEEP climate stations + FS Manager records for greenhouses. Temperature, humidity and ventilation control for tomatoes, peppers and leafy greens.',
+    'Smart greenhouse IoT for African growers. PENKEEP climate stations monitor temperature, humidity, CO₂ and ventilation across tomato, pepper and leafy-greens houses. FS Manager records every reading for grants, buyers and export compliance.',
+  keywords: [
+    'smart greenhouse IoT',
+    'greenhouse climate control Africa',
+    'greenhouse monitoring system Nigeria',
+    'IoT greenhouse sensors',
+    'greenhouse humidity control',
+    'tomato greenhouse management',
+    'pepper greenhouse IoT',
+    'controlled environment agriculture Africa',
+    'PENKEEP',
+    'FS Manager',
+  ],
+  alternates: { canonical: 'https://www.fsinnovation.net/products/greenhouse' },
+  openGraph: {
+    title: 'Smart Greenhouse IoT — Climate Control for African Growers',
+    description:
+      'PENKEEP IoT climate stations + FS Manager records for tomato, pepper and leafy-greens houses. Temperature, humidity, CO₂ and ventilation from one panel.',
+    url: 'https://www.fsinnovation.net/products/greenhouse',
+    images: ['/products-hero-composite.png'],
+    type: 'website',
+  },
 };
 
 export default function GreenhousePage() {
   return (
+    <>
+      <ProductJsonLd
+        name="PENKEEP + FS Manager for Greenhouses"
+        description="Smart greenhouse IoT: PENKEEP climate station for temperature, humidity, CO₂ and ventilation control across tomato, pepper and leafy-greens houses. FS Manager records for grants and export compliance."
+        image="/products-hero-composite.png"
+        slug="greenhouse"
+        category="Smart Greenhouse IoT"
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Products', url: '/products' },
+          { name: 'Greenhouses', url: '/products/greenhouse' },
+        ]}
+      />
     <ProductDetailLayout
       eyebrow="For greenhouses"
       title="Greenhouses"
@@ -94,5 +131,6 @@ export default function GreenhousePage() {
         },
       ]}
     />
+    </>
   );
 }

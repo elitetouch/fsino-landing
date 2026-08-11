@@ -1,9 +1,64 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
   Bird, Leaf, Droplet, Snowflake, Fish,
   Cpu, LineChart, ShieldCheck, ArrowRight, Sparkles,
 } from 'lucide-react';
+import { FaqJsonLd } from '@/components/seo/json-ld';
+
+/**
+ * Home-page metadata. Overrides the root default with a title that
+ * leads on the highest-intent commercial query ("smart farm IoT") while
+ * still carrying the five verticals into the description so the home
+ * page is eligible for all of them.
+ */
+export const metadata: Metadata = {
+  // Deliberately NOT using the template here — `title.absolute` gives
+  // the home page a self-contained title instead of "X · Farm Support
+  // Innovation", which would read as a duplicate brand mention.
+  title: {
+    absolute:
+      'Farm Support Innovation — Smart Farm IoT & AI | Poultry, Greenhouse, Irrigation, Cold Chain, Aquaculture',
+  },
+  description:
+    'Smart farm IoT and AI-powered management for African farms. PENKEEP climate stations and FS Manager software for smart poultry farm management, greenhouse climate control, smart irrigation, cold chain monitoring and aquaculture. Nigeria-built, priced for smallholders. Formerly Farmspeak Technology.',
+  alternates: { canonical: 'https://www.fsinnovation.net' },
+};
+
+/**
+ * FAQs mirrored into FAQPage JSON-LD so they can win the expandable
+ * "People also ask" treatment on SERP. Questions are phrased the way a
+ * farmer actually types them into Google, not the way we'd write a
+ * feature list.
+ */
+const HOME_FAQS = [
+  {
+    question: 'What is the best smart poultry farm management system in Nigeria?',
+    answer:
+      'Farm Support Innovation (formerly Farmspeak Technology) builds PENKEEP IoT climate stations paired with FS Manager software for Nigerian poultry farms. It tracks feed conversion, mortality, vaccination compliance and pen climate in real time, benchmarks every metric against Ross 308, Cobb 500, Hy-Line, Lohmann and ISA breed standards, and exports bank-ready PDF cycle reports.',
+  },
+  {
+    question: 'How does IoT and AI help poultry farming?',
+    answer:
+      'IoT sensors inside the pen report temperature, humidity, ammonia and CO2 continuously, controlling heaters and fans autonomously so conditions never drift into the danger zone. The software layer compares your feed use and bird weight against breed-standard growth curves, flags mortality spikes days before they are visible by eye, and projects cost and profit before the cycle ends.',
+  },
+  {
+    question: 'Does PENKEEP work without reliable internet?',
+    answer:
+      'Yes. PENKEEP controls heaters, fans and aeration autonomously over local wifi with no internet connection required, so your birds, crops or fish stay safe during an outage. Readings buffer locally and sync to FS Manager when the connection returns.',
+  },
+  {
+    question: 'What is smart cold chain monitoring and why does it matter?',
+    answer:
+      'Smart cold chain monitoring places continuous temperature sensors inside cold rooms and reefer trucks so every excursion is recorded with a timestamp. That record is what an insurer, food-safety auditor or pharmaceutical regulator asks for after a spoiled shipment, and it is the difference between a paid claim and a rejected one.',
+  },
+  {
+    question: 'Which farm types does Farm Support Innovation serve?',
+    answer:
+      'Five verticals: poultry farms (broiler, layer and dual-purpose), greenhouses growing tomatoes, peppers and leafy greens, smart irrigation for field crops, cold chain facilities including cold rooms and reefer trucks, and aquaculture covering catfish ponds and RAS systems.',
+  },
+];
 
 /**
  * Home — the front door of Farm Support Innovation.
@@ -68,6 +123,8 @@ export default function HomePage() {
 
   return (
     <div>
+      <FaqJsonLd items={HOME_FAQS} />
+
       {/* ─────────────────────────── HERO ─────────────────────────── */}
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-[1200px] gap-10 px-4 pb-20 pt-16 sm:px-6 sm:pb-24 sm:pt-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,480px)] lg:items-center lg:gap-12 lg:px-8">

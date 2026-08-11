@@ -1,15 +1,51 @@
 import type { Metadata } from 'next';
+import { BreadcrumbJsonLd, ProductJsonLd } from '@/components/seo/json-ld';
 import { Fish, LineChart } from 'lucide-react';
 import { ProductDetailLayout } from '@/components/product-detail-layout';
 
 export const metadata: Metadata = {
-  title: 'Aquaculture',
+  title: 'Smart Aquaculture IoT · Water Quality Monitoring for Fish Farms',
   description:
-    'Water quality + feed-cycle records for catfish ponds and RAS systems. Catch problems in the pond before they cost you a harvest.',
+    'Smart aquaculture IoT for catfish ponds and RAS systems across Africa. PENKEEP monitors dissolved oxygen, water temperature and pH continuously. FS Manager records feed cycles, mortality and harvest projections.',
+  keywords: [
+    'smart aquaculture IoT',
+    'catfish pond water quality monitoring',
+    'aquaculture management software Nigeria',
+    'RAS water quality sensor',
+    'dissolved oxygen sensor pond',
+    'fish farm IoT Africa',
+    'fish feed cycle software',
+    'PENKEEP',
+    'FS Manager',
+  ],
+  alternates: { canonical: 'https://www.fsinnovation.net/products/aquaculture' },
+  openGraph: {
+    title: 'Smart Aquaculture IoT — Water Quality for African Fish Farms',
+    description:
+      'PENKEEP water quality monitoring for catfish ponds and RAS. FS Manager records feed cycles, mortality and harvest projections.',
+    url: 'https://www.fsinnovation.net/products/aquaculture',
+    images: ['/irrigation-hero.png'],
+    type: 'website',
+  },
 };
 
 export default function AquaculturePage() {
   return (
+    <>
+      <ProductJsonLd
+        name="PENKEEP + FS Manager for Aquaculture"
+        description="Smart aquaculture IoT: PENKEEP dissolved-oxygen, temperature and pH sensors for catfish ponds and RAS systems. FS Manager records feed cycles, mortality and harvest projections."
+        image="/irrigation-hero.png"
+        slug="aquaculture"
+        category="Smart Aquaculture IoT"
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Products', url: '/products' },
+          { name: 'Aquaculture', url: '/products/aquaculture' },
+        ]}
+      />
     <ProductDetailLayout
       eyebrow="For catfish ponds + RAS systems"
       title="Aquaculture"
@@ -94,5 +130,6 @@ export default function AquaculturePage() {
         },
       ]}
     />
+    </>
   );
 }

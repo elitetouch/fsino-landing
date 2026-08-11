@@ -1,15 +1,57 @@
 import type { Metadata } from 'next';
 import { Bird, Cpu, LineChart } from 'lucide-react';
 import { ProductDetailLayout } from '@/components/product-detail-layout';
+import { BreadcrumbJsonLd, ProductJsonLd } from '@/components/seo/json-ld';
 
 export const metadata: Metadata = {
-  title: 'Poultry farms',
+  title: 'Smart Poultry Farm Management · IoT + AI for Broiler & Layer Farms',
   description:
-    'PENKEEP climate stations + FS Manager records for broiler, layer and dual-purpose flocks. Daily logging, breed-standard benchmarks, bank-ready reports.',
+    'Smart poultry farm management with PENKEEP IoT climate stations and FS Manager AI-powered software. Real-time pen monitoring, Ross 308 / Cobb 500 / Hy-Line benchmarks, feed conversion tracking, mortality alerts, and bank-ready cycle reports. Built for Nigerian broiler, layer and dual-purpose flocks.',
+  keywords: [
+    'smart poultry farm management',
+    'IoT poultry farming',
+    'AI in poultry farming Nigeria',
+    'poultry monitoring system',
+    'poultry farm software Nigeria',
+    'broiler management app',
+    'layer farm IoT',
+    'Ross 308 benchmarks',
+    'Cobb 500 benchmarks',
+    'Hy-Line software',
+    'poultry cycle report',
+    'PENKEEP',
+    'FS Manager',
+    'poultry feed conversion tracker',
+    'poultry climate control Nigeria',
+  ],
+  alternates: { canonical: 'https://www.fsinnovation.net/products/poultry' },
+  openGraph: {
+    title: 'Smart Poultry Farm Management — IoT + AI for African Farms',
+    description:
+      'PENKEEP IoT + FS Manager software for broiler, layer and dual-purpose flocks. Ross 308 / Cobb 500 / Hy-Line benchmarks, bank-ready reports.',
+    url: 'https://www.fsinnovation.net/products/poultry',
+    images: ['/poultry-hero.png'],
+    type: 'website',
+  },
 };
 
 export default function PoultryPage() {
   return (
+    <>
+      <ProductJsonLd
+        name="PENKEEP + FS Manager for Poultry"
+        description="Smart poultry farm management: PENKEEP IoT climate station + FS Manager records with Ross 308 / Cobb 500 / Hy-Line benchmarks, feed conversion tracking, mortality alerts and bank-ready cycle reports."
+        image="/poultry-hero.png"
+        slug="poultry"
+        category="Smart Poultry Farm Management"
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Products', url: '/products' },
+          { name: 'Poultry', url: '/products/poultry' },
+        ]}
+      />
     <ProductDetailLayout
       eyebrow="For poultry farms"
       title="Poultry"
@@ -94,5 +136,6 @@ export default function PoultryPage() {
         },
       ]}
     />
+    </>
   );
 }
