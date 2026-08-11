@@ -15,8 +15,8 @@ export default function IrrigationPage() {
       title="Smart irrigation"
       tagline="Water when the crop needs it, not when a clock says to."
       intro="Soil-moisture probes in the root zone, connected to solenoid valves at your header. When soil moisture drops below the crop\'s target, valves open; when it hits field capacity, they close. Field-tested for maize, cassava, tomato, pepper and onion. Cuts water bills 20–40% without cutting yield."
-      heroImage="/mobilescreen.svg"
-      heroImageAlt="FS Manager showing soil moisture over time"
+      heroImage="/irrigation-hero.png"
+      heroImageAlt="PENKEEP soil-moisture station with solar panel and Patented badge, alongside FS Manager irrigation reports on mobile, desktop and tablet"
       hardware={{
         device: 'PENKEEP irrigation controller',
         body: 'Soil-moisture probes buried at 15 cm and 30 cm in the root zone report every 30 seconds. Controller switches solenoid valves at your header. Solar-powered — no mains needed at the field.',
