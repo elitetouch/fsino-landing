@@ -129,10 +129,32 @@ export function WebsiteJsonLd() {
 }
 
 /**
- * Product schema for the five verticals. Google shows rich snippets
- * (price / rating / availability) when this is on a product page.
- * We don't publish per-vertical pricing yet, so `offers` points at the
- * pricing hub instead of hardcoding a number.
+ * Product schema for the five verticals.
+ *
+ * NOTE ON `offers` — deliberately omitted.
+ *
+ * The first version shipped an `AggregateOffer` with no `lowPrice`,
+ * which Google's Rich Results Test flags as a CRITICAL error
+ * ("Missing field lowPrice") and which makes the whole Product item
+ * ineligible for rich results.
+ *
+ * We can't fix it by hardcoding a price: /pricing fetches token and
+ * device prices LIVE from the billing API at request time, so any
+ * number baked into static JSON-LD would (a) be invented and (b) drift
+ * out of sync the moment ops changes pricing. Publishing a price in
+ * structured data that doesn't match the page is a structured-data
+ * spam signal, which is worse than having no price at all.
+ *
+ * Dropping `offers` costs us the price/availability rich result — an
+ * e-commerce feature that was never a good fit for a B2B page selling
+ * per-bird tokens plus installed hardware. Breadcrumbs (CTR lift) and
+ * Organization (Knowledge Panel) still validate and carry the real SEO
+ * value here.
+ *
+ * To restore it later: make the product pages server components that
+ * await fetchTokenPrices(), then pass a real `lowPrice` + `highPrice`
+ * through to this component. Guard the build against API downtime
+ * before doing that.
  */
 export function ProductJsonLd({
   name,
@@ -159,13 +181,6 @@ export function ProductJsonLd({
         manufacturer: { '@id': `${SITE_URL}#organization` },
         category,
         url: `${SITE_URL}/products/${slug}`,
-        offers: {
-          '@type': 'AggregateOffer',
-          priceCurrency: 'NGN',
-          availability: 'https://schema.org/InStock',
-          url: `${SITE_URL}/pricing`,
-          seller: { '@id': `${SITE_URL}#organization` },
-        },
       }}
     />
   );
