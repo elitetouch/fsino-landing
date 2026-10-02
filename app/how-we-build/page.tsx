@@ -1,15 +1,22 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import {
-  ArrowRight, Check, Cpu, HandshakeIcon, MapPin, ShieldCheck,
-  Sparkles, Users2, Wrench,
-} from 'lucide-react';
+  ArrowRight,
+  Check,
+  Cpu,
+  HandshakeIcon,
+  MapPin,
+  ShieldCheck,
+  Sparkles,
+  Users2,
+  Wrench,
+} from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'How we build',
+  title: "How we build",
   description:
-    'A workshop tour, sourcing standards, quality checks, and the farmers we build for. Every PENKEEP is hand-assembled in our Ogun workshop and field-tested before it ships.',
+    "A workshop tour, sourcing standards, quality checks, and the farmers we build for. Every PENKEEP is hand-assembled in our Ogun workshop and field-tested before it ships.",
 };
 
 /**
@@ -28,73 +35,73 @@ export const metadata: Metadata = {
 
 const STAGES = [
   {
-    step: '1',
-    title: 'Board bring-up',
-    body: 'Every PCB arrives from our supplier, gets bench-tested for continuity and power rails, then flashed with the latest PENKEEP firmware. Boards that don\'t pass go back — we don\'t ship anything we wouldn\'t install on our own farm.',
+    step: "1",
+    title: "Board design, development and testing",
+    body: "Every PCB that is designed and developed, gets bench-tested for continuity and power rails, then flashed with the latest PENKEEP firmware based on the farm it will be deployed. Boards that don't pass go back — we don't ship anything we wouldn't install on our own farm.",
     icon: Cpu,
   },
   {
-    step: '2',
-    title: 'Sensor calibration',
-    body: 'Temperature, humidity, ammonia and CO₂ probes are calibrated against a reference instrument before installation into the enclosure. ±0.5°C on temperature, ±3% RH on humidity — meets HACCP and Aviagen management-guide requirements.',
+    step: "2",
+    title: "Sensor calibration",
+    body: "Temperature, humidity,moisture content sensor Probe, PH probe,  ammonia and CO₂ probes are calibrated against a reference instrument before installation into the enclosure. ±0.5°C on temperature, ±3% RH on humidity — meets HACCP and Aviagen management-guide requirements.",
     icon: Wrench,
   },
   {
-    step: '3',
-    title: 'Enclosure assembly',
-    body: 'Boards mount into a poultry-grade splash-resistant enclosure. Cabling routed, strain-relieved and heat-shrunk. Every unit is inspected by a second person before final closure — nobody signs off on their own work.',
+    step: "3",
+    title: "Enclosure assembly",
+    body: "Boards mount into a poultry-grade splash-resistant enclosure. Cabling routed, strain-relieved and heat-shrunk. Every unit is inspected by a second person before final closure — nobody signs off on their own work.",
     icon: HandshakeIcon,
   },
   {
-    step: '4',
-    title: 'Burn-in test',
-    body: 'Every completed unit runs a 24-hour burn-in against a reference environment. Readings must stay within ±0.5°C of the calibration and network connectivity must hold across three router reboots.',
+    step: "4",
+    title: "Burn-in test",
+    body: "Every completed unit runs a 24-hour burn-in against a reference environment. Readings must stay within ±0.5°C of the calibration and network connectivity must hold across three router reboots.",
     icon: ShieldCheck,
   },
   {
-    step: '5',
-    title: 'Field install',
-    body: 'Once a PENKEEP passes burn-in it ships to a farm. Our install team mounts it, wires the heater / fan / aerator loads and walks the farmer through the first-week readings. Every install documented with photos.',
+    step: "5",
+    title: "Field install",
+    body: "Once a PENKEEP passes burn-in it ships to a farm. Our install team mounts it, wires the heater / fan / aerator loads and walks the farmer through the first-week readings. Every install documented with photos.",
     icon: MapPin,
   },
   {
-    step: '6',
-    title: 'Continuous feedback',
-    body: 'Every reading from every deployed PENKEEP feeds back into how the next batch is tuned. Firmware improvements, sensor placements, enclosure tweaks — the fleet gets better every quarter because we can see how it\'s actually behaving.',
+    step: "6",
+    title: "Continuous feedback",
+    body: "Every reading from every deployed PENKEEP feeds back into how the next batch is tuned. Firmware improvements, sensor placements, enclosure tweaks — the fleet gets better every quarter because we can see how it's actually behaving.",
     icon: Sparkles,
   },
 ];
 
 const SOURCING = [
   {
-    label: 'Sensors',
-    body: 'DHT22 for temperature/humidity, MQ-137 for ammonia, MG-811 for CO₂ — proven parts with published tolerances, not the cheapest cost-down alternative.',
+    label: "Sensors",
+    body: "DHT22 for temperature/humidity, MQ-137 for ammonia, MG-811 for CO₂ — proven parts with published tolerances, not the cheapest cost-down alternative.",
   },
   {
-    label: 'MCU',
-    body: 'Industrial-grade microcontroller with hardware watchdog. Reboots itself if the firmware ever locks up so a farm never wakes to a silent device.',
+    label: "MCU",
+    body: "Industrial-grade microcontroller with hardware watchdog. Reboots itself if the firmware ever locks up so a farm never wakes to a silent device.",
   },
   {
-    label: 'Enclosure',
-    body: 'IP54-rated polycarbonate housing — dust-tight, splash-resistant. Rated for pen conditions where wash-down and ammonia are daily.',
+    label: "Enclosure",
+    body: "IP54-rated polycarbonate housing — dust-tight, splash-resistant. Rated for pen conditions where wash-down and ammonia are daily.",
   },
   {
-    label: 'Battery',
-    body: 'LiFePO₄ pack for battery backup — safer chemistry than Li-ion, longer cycle life, no thermal-runaway risk in a hot pen.',
+    label: "Battery",
+    body: "LiFePO₄ pack for battery backup — safer chemistry than Li-ion, longer cycle life, no thermal-runaway risk in a hot pen.",
   },
 ];
 
 const VERTICALS_SERVED = [
-  { name: 'Poultry farms', href: '/products/poultry' },
-  { name: 'Greenhouses', href: '/products/greenhouse' },
-  { name: 'Smart irrigation', href: '/products/irrigation' },
-  { name: 'Cold chain', href: '/products/cold-chain' },
-  { name: 'Aquaculture', href: '/products/aquaculture' },
+  { name: "Poultry farms", href: "/products/poultry" },
+  { name: "Greenhouses", href: "/products/greenhouse" },
+  { name: "Smart irrigation", href: "/products/irrigation" },
+  { name: "Cold chain", href: "/products/cold-chain" },
+  { name: "Aquaculture", href: "/products/aquaculture" },
 ];
 
 export default function HowWeBuildPage() {
   const tenantUrl =
-    process.env.NEXT_PUBLIC_TENANT_APP_URL ?? 'https://web.fsinnovation.net';
+    process.env.NEXT_PUBLIC_TENANT_APP_URL ?? "https://web.fsinnovation.net";
 
   return (
     <div>
@@ -108,7 +115,10 @@ export default function HowWeBuildPage() {
             A hardware company with a workshop, not a slide deck.
           </h1>
           <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-[var(--color-brand-fg-soft)] sm:text-[17px]">
-            Every PENKEEP is hand-assembled in our Ogun workshop, calibrated against reference instruments, burn-in tested for 24 hours, and installed on a real farm by a person who can call the farmer by name. This is what that looks like end-to-end.
+            Every PENKEEP is hand-assembled in our Ogun workshop, calibrated
+            against reference instruments, burn-in tested for 24 hours, and
+            installed on a real farm by a person who can call the farmer by
+            name. This is what that looks like end-to-end.
           </p>
         </div>
         <div
@@ -150,12 +160,16 @@ export default function HowWeBuildPage() {
               From bare board to farm-installed
             </h2>
             <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-brand-fg-soft)]">
-              Every PENKEEP goes through the same six stages, and no unit skips any of them. Nobody signs off on their own work.
+              Every PENKEEP goes through the same six stages, and no unit skips
+              any of them. Nobody signs off on their own work.
             </p>
           </div>
           <ol className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {STAGES.map((s) => (
-              <li key={s.step} className="rounded-2xl border border-[var(--color-brand-border)] bg-white p-6">
+              <li
+                key={s.step}
+                className="rounded-2xl border border-[var(--color-brand-border)] bg-white p-6"
+              >
                 <div className="flex items-start gap-3">
                   <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--color-brand-accent)] text-[var(--color-brand-primary-deep)]">
                     <s.icon className="h-5 w-5" strokeWidth={2.2} />
@@ -190,14 +204,21 @@ export default function HowWeBuildPage() {
                 Chosen for reliability, not cost
               </h2>
               <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-brand-fg-soft)]">
-                A PENKEEP has to work for years in a hot, humid, ammonia-heavy pen or a sun-drenched greenhouse. The parts we pick reflect that operating environment — not the cheapest catalog listing.
+                A PENKEEP has to work for years in a hot, humid, ammonia-heavy
+                pen or a sun-drenched greenhouse. The parts we pick reflect that
+                operating environment — not the cheapest catalog listing.
               </p>
               <div className="mt-6 space-y-3">
                 {SOURCING.map((item) => (
                   <div key={item.label} className="flex items-start gap-3">
-                    <Check className="mt-1 h-4 w-4 shrink-0 text-[var(--color-brand-primary-deep)]" strokeWidth={2.5} />
+                    <Check
+                      className="mt-1 h-4 w-4 shrink-0 text-[var(--color-brand-primary-deep)]"
+                      strokeWidth={2.5}
+                    />
                     <div>
-                      <p className="text-[13.5px] font-bold text-[var(--color-brand-fg)]">{item.label}</p>
+                      <p className="text-[13.5px] font-bold text-[var(--color-brand-fg)]">
+                        {item.label}
+                      </p>
                       <p className="mt-0.5 text-[12.5px] leading-relaxed text-[var(--color-brand-fg-soft)]">
                         {item.body}
                       </p>
@@ -240,12 +261,21 @@ export default function HowWeBuildPage() {
                 Smallholder and mid-scale, not just industrial
               </h2>
               <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-brand-fg-soft)]">
-                The commercial tools built for 100,000-bird operations don&apos;t serve the family compound in Enugu or the co-op in Kaduna. That&apos;s who we build for. Our pricing, hardware footprint and installation approach are all sized to work at 500 birds as well as they work at 20,000.
+                The commercial tools built for 100,000-bird operations
+                don&apos;t serve the family compound in Enugu or the co-op in
+                Kaduna. That&apos;s who we build for. Our pricing, hardware
+                footprint and installation approach are all sized to work at 500
+                birds as well as they work at 20,000.
               </p>
               <div className="mt-5 flex items-start gap-3">
-                <Users2 className="mt-1 h-4 w-4 shrink-0 text-[var(--color-brand-primary-deep)]" strokeWidth={2.5} />
+                <Users2
+                  className="mt-1 h-4 w-4 shrink-0 text-[var(--color-brand-primary-deep)]"
+                  strokeWidth={2.5}
+                />
                 <p className="text-[13.5px] leading-relaxed text-[var(--color-brand-fg-soft)]">
-                  <strong className="text-[var(--color-brand-fg)]">Same platform, five verticals.</strong>{' '}
+                  <strong className="text-[var(--color-brand-fg)]">
+                    Same platform, five verticals.
+                  </strong>{" "}
                   The same PENKEEP and FS Manager serve everyone below:
                 </p>
               </div>
@@ -279,7 +309,10 @@ export default function HowWeBuildPage() {
                   Tour the workshop, in person or on a call
                 </h2>
                 <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/90">
-                  Farmer visiting Lagos or Ogun? Come see the workshop. Investor or grant funder doing diligence? We&apos;ll walk you through end-to-end on a call. Either way — this isn&apos;t a slide deck.
+                  Farmer visiting Lagos or Ogun? Come see the workshop. Investor
+                  or grant funder doing diligence? We&apos;ll walk you through
+                  end-to-end on a call. Either way — this isn&apos;t a slide
+                  deck.
                 </p>
               </div>
               <div className="flex flex-col gap-2 sm:flex-row md:flex-col">
@@ -305,9 +338,17 @@ export default function HowWeBuildPage() {
 }
 
 function VideoCard({
-  src, poster, tag, title, body,
+  src,
+  poster,
+  tag,
+  title,
+  body,
 }: {
-  src: string; poster: string; tag: string; title: string; body: string;
+  src: string;
+  poster: string;
+  tag: string;
+  title: string;
+  body: string;
 }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-[var(--color-brand-border)] bg-white">

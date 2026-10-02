@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
-import { ExternalLink, Mail, MessageCircle, Phone } from 'lucide-react';
+import type { Metadata } from "next";
+import { ExternalLink, Mail, MessageCircle, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  title: "Contact",
   description:
-    'Reach us by phone, WhatsApp or email. Support responds within a working day.',
+    "Reach us by phone, WhatsApp or email. Support responds within a working day.",
 };
 
 /**
@@ -17,15 +17,18 @@ export const metadata: Metadata = {
  * it needs a user account.
  */
 export default function ContactPage() {
-  const phone = process.env.NEXT_PUBLIC_SUPPORT_PHONE ?? '';
-  const hours = process.env.NEXT_PUBLIC_SUPPORT_HOURS ?? 'Weekdays 9am to 6pm WAT';
-  const whatsappGroup = process.env.NEXT_PUBLIC_WHATSAPP_GROUP_URL ?? '';
+  const phone = process.env.NEXT_PUBLIC_SUPPORT_PHONE ?? "";
+  const hours =
+    process.env.NEXT_PUBLIC_SUPPORT_HOURS ?? "Weekdays 9am to 6pm WAT";
+  const whatsappGroup = process.env.NEXT_PUBLIC_WHATSAPP_GROUP_URL ?? "";
 
-  const phoneReady = /^\+?\d{6,20}$/.test(phone.replace(/\s/g, ''));
+  const phoneReady = /^\+?\d{6,20}$/.test(phone.replace(/\s/g, ""));
   const waGroupReady =
-    whatsappGroup.startsWith('https://chat.whatsapp.com/') &&
-    !whatsappGroup.includes('replace-with-real-invite-code');
-  const waDm = phoneReady ? `https://wa.me/${phone.replace(/[^\d]/g, '')}` : null;
+    whatsappGroup.startsWith("https://chat.whatsapp.com/") &&
+    !whatsappGroup.includes("replace-with-real-invite-code");
+  const waDm = phoneReady
+    ? `https://wa.me/${phone.replace(/[^\d]/g, "")}`
+    : null;
 
   return (
     <div>
@@ -38,8 +41,8 @@ export default function ContactPage() {
             How can we help?
           </h1>
           <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-[var(--color-brand-fg-soft)]">
-            Reach us the way that fits the moment — phone, WhatsApp,
-            or an email the team picks up in order.
+            Reach us the way that fits the moment via phone, WhatsApp, or an
+            email the team picks up in order.
           </p>
         </div>
       </section>
@@ -50,7 +53,7 @@ export default function ContactPage() {
             icon={Phone}
             title="Call us"
             body={hours}
-            cta={phoneReady ? `Call ${phone}` : 'Phone line coming soon'}
+            cta={phoneReady ? `Call ${phone}` : "Phone line coming soon"}
             href={phoneReady ? `tel:${phone}` : undefined}
             tone="brand"
           />
@@ -58,7 +61,7 @@ export default function ContactPage() {
             icon={MessageCircle}
             title="WhatsApp us directly"
             body="1-on-1 chat with the support team. Fastest for anything you can describe in a couple of lines."
-            cta={waDm ? 'Open WhatsApp' : 'Phone number coming soon'}
+            cta={waDm ? "Open WhatsApp" : "Phone number coming soon"}
             href={waDm ?? undefined}
             external
             tone="whatsapp"
@@ -66,9 +69,9 @@ export default function ContactPage() {
           <ChannelCard
             icon={Mail}
             title="Email"
-            body="For anything non-urgent — feature ideas, billing questions, partnership enquiries."
-            cta="hello@fsinnovation.net"
-            href="mailto:hello@fsinnovation.net"
+            body="For anything non-urgent feature ideas, billing questions, partnership enquiries."
+            cta="support@fsinnovation.net"
+            href="mailto:spport@fsinnovation.net"
             tone="brand"
           />
           {waGroupReady && (
@@ -103,24 +106,25 @@ function ChannelCard({
   cta: string;
   href?: string;
   external?: boolean;
-  tone: 'brand' | 'whatsapp';
+  tone: "brand" | "whatsapp";
 }) {
   const disabled = !href;
   const iconCls =
-    tone === 'whatsapp'
-      ? 'bg-[#25D366] text-white'
-      : 'bg-[var(--color-brand-accent)] text-[var(--color-brand-primary-deep)]';
+    tone === "whatsapp"
+      ? "bg-[#25D366] text-white"
+      : "bg-[var(--color-brand-accent)] text-[var(--color-brand-primary-deep)]";
   const ctaCls =
-    tone === 'whatsapp'
-      ? 'bg-[#25D366] text-white hover:bg-[#1DA851]'
-      : 'bg-[var(--color-brand-primary)] text-white hover:bg-[var(--color-brand-primary-deep)]';
+    tone === "whatsapp"
+      ? "bg-[#25D366] text-white hover:bg-[#1DA851]"
+      : "bg-[var(--color-brand-primary)] text-white hover:bg-[var(--color-brand-primary-deep)]";
 
   return (
     <div className="rounded-2xl border border-[var(--color-brand-border)] bg-white p-6">
       <div className="flex items-start gap-3">
         <span
           className={
-            'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ' + iconCls
+            "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl " +
+            iconCls
           }
         >
           <Icon className="h-5 w-5" strokeWidth={2.2} />
@@ -142,10 +146,10 @@ function ChannelCard({
         ) : (
           <a
             href={href}
-            target={external ? '_blank' : undefined}
-            rel={external ? 'noopener noreferrer' : undefined}
+            target={external ? "_blank" : undefined}
+            rel={external ? "noopener noreferrer" : undefined}
             className={
-              'inline-flex h-10 items-center justify-center gap-1.5 rounded-lg px-4 text-[13px] font-bold ' +
+              "inline-flex h-10 items-center justify-center gap-1.5 rounded-lg px-4 text-[13px] font-bold " +
               ctaCls
             }
           >

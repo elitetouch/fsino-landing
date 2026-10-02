@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from "next/link";
+import Image from "next/image";
 
 /**
  * Global footer. Four columns on desktop:
@@ -10,30 +10,34 @@ import Image from 'next/image';
  */
 const COLUMNS = [
   {
-    heading: 'Product',
+    heading: "Product",
     links: [
-      { href: '/products', label: 'All products' },
-      { href: '/products/poultry', label: 'Poultry farms' },
-      { href: '/products/greenhouse', label: 'Greenhouses' },
-      { href: '/products/irrigation', label: 'Smart irrigation' },
-      { href: '/products/cold-chain', label: 'Cold chain' },
-      { href: '/products/aquaculture', label: 'Aquaculture' },
-      { href: '/pricing', label: 'Pricing' },
+      { href: "/products", label: "All products" },
+      { href: "/products/poultry", label: "Poultry farms" },
+      { href: "/products/greenhouse", label: "Greenhouses" },
+      { href: "/products/irrigation", label: "Smart irrigation" },
+      { href: "/products/cold-chain", label: "Cold chain" },
+      { href: "/products/aquaculture", label: "Aquaculture" },
+      { href: "/pricing", label: "Pricing" },
     ],
   },
   {
-    heading: 'Company',
+    heading: "Company",
     links: [
-      { href: '/about', label: 'About us' },
-      { href: '/how-we-build', label: 'How we build' },
-      { href: 'https://www.farmspeak.net/rebrand', label: 'Our rebrand story', external: true },
+      { href: "/about", label: "About us" },
+      { href: "/how-we-build", label: "How we build" },
+      {
+        href: "https://www.farmspeak.net/rebrand",
+        label: "Our rebrand story",
+        external: true,
+      },
     ],
   },
   {
-    heading: 'Support',
+    heading: "Support",
     links: [
-      { href: '/contact', label: 'Contact us' },
-      { href: 'https://web.fsinnovation.net', label: 'Log in', external: true },
+      { href: "/contact", label: "Contact us" },
+      { href: "https://web.fsinnovation.net", label: "Log in", external: true },
     ],
   },
 ];
@@ -50,15 +54,15 @@ export function SiteFooter() {
                 alt=""
                 width={40}
                 height={40}
-                className="h-10 w-10"
+                className="h-40 w-40 rounded-3xl"
               />
-              <p className="text-[13px] font-bold tracking-tight text-[var(--color-brand-primary-deep)]">
+              {/* <p className="text-[13px] font-bold tracking-tight text-[var(--color-brand-primary-deep)]">
                 Farm Support Innovation
-              </p>
+              </p> */}
             </div>
             <p className="mt-3 text-[12.5px] leading-relaxed text-[var(--color-brand-muted)]">
-              An operating system for African farmers. Built in Ogun and
-              Lagos. Serving farmers from the Sahel to the Guinea coast.
+              An operating system for African farmers. Built in Ogun and Lagos.
+              Serving farmers from the Sahel to the Guinea coast.
             </p>
             <p className="mt-3 text-[11.5px] text-[var(--color-brand-muted)]">
               Formerly Farmspeak Technology.
@@ -73,7 +77,7 @@ export function SiteFooter() {
               <ul className="mt-3 space-y-2">
                 {col.links.map((link) => (
                   <li key={link.href}>
-                    {'external' in link && link.external ? (
+                    {"external" in link && link.external ? (
                       <a
                         href={link.href}
                         target="_blank"
@@ -99,7 +103,8 @@ export function SiteFooter() {
 
         <div className="mt-10 border-t border-[var(--color-brand-border)] pt-6">
           <p className="text-[11px] text-[var(--color-brand-muted)]">
-            © {new Date().getFullYear()} Farm Support Innovation Ltd. All rights reserved.
+            © {new Date().getFullYear()} Farm Support Innovation Ltd. All rights
+            reserved.
           </p>
         </div>
       </div>
