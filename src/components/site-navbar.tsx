@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 /**
  * Site-wide top navigation.
@@ -18,11 +18,11 @@ import { Menu, X } from 'lucide-react';
  * every page, and never wonder where the login is.
  */
 const LINKS = [
-  { href: '/products', label: 'Products' },
-  { href: '/pricing', label: 'Pricing' },
-  { href: '/how-we-build', label: 'How we build' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: "/products", label: "Products" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/how-we-build", label: "How we build" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function SiteNavbar() {
@@ -30,7 +30,7 @@ export function SiteNavbar() {
   const [open, setOpen] = useState(false);
 
   const tenantUrl =
-    process.env.NEXT_PUBLIC_TENANT_APP_URL ?? 'https://web.fsinnovation.net';
+    process.env.NEXT_PUBLIC_TENANT_APP_URL ?? "https://web.fsinnovation.net";
 
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--color-brand-border)] bg-white/95 backdrop-blur">
@@ -41,12 +41,12 @@ export function SiteNavbar() {
           className="flex items-center gap-2.5 text-[15px] font-bold tracking-tight text-[var(--color-brand-primary-deep)]"
         >
           <Image
-            src="/fsi-logo.svg"
+            src="/fsino_icon.png"
             alt=""
             width={40}
             height={40}
             priority
-            className="h-9 w-9"
+            className="h-12 w-12"
           />
           <span className="hidden sm:inline">Farm Support Innovation</span>
         </Link>
@@ -54,16 +54,17 @@ export function SiteNavbar() {
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 lg:flex">
           {LINKS.map((link) => {
-            const active = pathname === link.href || pathname?.startsWith(`${link.href}/`);
+            const active =
+              pathname === link.href || pathname?.startsWith(`${link.href}/`);
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={
-                  'rounded-md px-3 py-2 text-[13.5px] font-semibold transition-colors ' +
+                  "rounded-md px-3 py-2 text-[13.5px] font-semibold transition-colors " +
                   (active
-                    ? 'text-[var(--color-brand-primary-deep)]'
-                    : 'text-[var(--color-brand-fg-soft)] hover:text-[var(--color-brand-primary-deep)]')
+                    ? "text-[var(--color-brand-primary-deep)]"
+                    : "text-[var(--color-brand-fg-soft)] hover:text-[var(--color-brand-primary-deep)]")
                 }
               >
                 {link.label}
@@ -91,7 +92,7 @@ export function SiteNavbar() {
         {/* Mobile hamburger */}
         <button
           type="button"
-          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
           className="inline-flex h-10 w-10 items-center justify-center rounded-md text-[var(--color-brand-fg-soft)] lg:hidden"
@@ -107,17 +108,18 @@ export function SiteNavbar() {
         <div className="border-t border-[var(--color-brand-border)] bg-white lg:hidden">
           <nav className="mx-auto flex max-w-[1200px] flex-col gap-1 p-4 sm:px-6">
             {LINKS.map((link) => {
-              const active = pathname === link.href || pathname?.startsWith(`${link.href}/`);
+              const active =
+                pathname === link.href || pathname?.startsWith(`${link.href}/`);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className={
-                    'rounded-md px-3 py-2.5 text-[14px] font-semibold ' +
+                    "rounded-md px-3 py-2.5 text-[14px] font-semibold " +
                     (active
-                      ? 'bg-[var(--color-brand-accent)] text-[var(--color-brand-primary-deep)]'
-                      : 'text-[var(--color-brand-fg-soft)]')
+                      ? "bg-[var(--color-brand-accent)] text-[var(--color-brand-primary-deep)]"
+                      : "text-[var(--color-brand-fg-soft)]")
                   }
                 >
                   {link.label}
@@ -144,4 +146,3 @@ export function SiteNavbar() {
     </header>
   );
 }
-
