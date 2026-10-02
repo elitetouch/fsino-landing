@@ -46,7 +46,7 @@ export function SiteNavbar() {
             width={40}
             height={40}
             priority
-            className="h-12 w-12"
+            className="h-12 w-14"
           />
           <span className="hidden sm:inline">Farm Support Innovation</span>
         </Link>
