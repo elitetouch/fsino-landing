@@ -40,13 +40,45 @@ const COLUMNS = [
       { href: "https://web.fsinnovation.net", label: "Log in", external: true },
     ],
   },
+  // The Legal column the docblock above has always promised, and which
+  // was missing: this site published no terms, no privacy policy and no
+  // route to account deletion anywhere. The documents live on the app
+  // domain because that is where they are maintained and where Play
+  // Console points, so these are external by necessity, not by style.
+  //
+  // 'Delete account' is not optional: Google Play requires the deletion
+  // route to be readily discoverable, and a visitor who arrives on the
+  // brand site first should not have to find the app to find it.
+  {
+    heading: "Legal",
+    links: [
+      {
+        href: "https://web.fsinnovation.net/legal/terms",
+        label: "Terms",
+        external: true,
+      },
+      {
+        href: "https://web.fsinnovation.net/legal/privacy",
+        label: "Privacy",
+        external: true,
+      },
+      {
+        href: "https://web.fsinnovation.net/legal/delete-account",
+        label: "Delete account",
+        external: true,
+      },
+    ],
+  },
 ];
 
 export function SiteFooter() {
   return (
     <footer className="mt-16 border-t border-[var(--color-brand-border)] bg-[var(--color-brand-surface-soft)]">
       <div className="mx-auto max-w-[1200px] px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {/* Five tracks, not four: the logo block plus Product, Company,
+            Support and Legal. At lg:grid-cols-4 the new column wrapped
+            onto a second row on its own. */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
           <div>
             <div className="flex items-center gap-2.5">
               <Image
