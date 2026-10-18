@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { SiteNavbar } from '@/components/site-navbar';
 import { SiteFooter } from '@/components/site-footer';
+import { GlobalDownloadCTA } from '@/components/global-download-cta';
+import { AndroidInstallBar } from '@/components/android-install-bar';
 import { OrganizationJsonLd, WebsiteJsonLd } from '@/components/seo/json-ld';
 import './globals.css';
 
@@ -163,7 +165,14 @@ export default function RootLayout({
 
         <SiteNavbar />
         <main className="min-h-[calc(100vh-64px)]">{children}</main>
+        {/* Download CTA above the footer on every page rather than
+            pasted into twelve of them. The last thing a visitor scrolls
+            past should be the install, whichever page search dropped
+            them on. Skips the home page, which closes with its own. */}
+        <GlobalDownloadCTA />
         <SiteFooter />
+        {/* Android phones only, after 600px of scroll, dismissible. */}
+        <AndroidInstallBar />
       </body>
     </html>
   );
