@@ -6,6 +6,7 @@ import {
   Cpu, LineChart, ShieldCheck, ArrowRight, Sparkles,
 } from 'lucide-react';
 import { FaqJsonLd } from '@/components/seo/json-ld';
+import { PlayStoreBadge } from '@/components/play-store-badge';
 
 /**
  * Home-page metadata. Overrides the root default with a title that
@@ -141,7 +142,12 @@ export default function HomePage() {
               hardware + software platform, priced for the smallholders and
               mid-scale farms that feed the continent, not just the industrial 1%.
             </p>
+            {/* Install sits beside the sign-up at equal weight. Most of
+                this audience arrives on a phone, where the app is the
+                better product and the shorter path — and an install is
+                a far stickier conversion than a browser session. */}
             <div className="mt-8 flex flex-wrap items-center gap-3">
+              <PlayStoreBadge />
               <a
                 href={`${tenantUrl}/register`}
                 className="inline-flex items-center gap-2 rounded-xl bg-[var(--color-brand-primary)] px-6 py-3.5 text-[15px] font-bold text-white transition-colors hover:bg-[var(--color-brand-primary-deep)]"
@@ -155,6 +161,9 @@ export default function HomePage() {
                 Explore products
               </Link>
             </div>
+            <p className="mt-3 text-[12.5px] text-[var(--color-brand-muted)]">
+              Free to download · No card · Works on any Android phone
+            </p>
 
             {/* Rebrand strip */}
             <div className="mt-10 inline-flex items-center gap-2 rounded-full border border-[var(--color-brand-border)] bg-[var(--color-brand-accent)] px-3.5 py-1.5 text-[11.5px] font-semibold text-[var(--color-brand-primary-deep)]">
@@ -385,7 +394,14 @@ export default function HomePage() {
                   when you&apos;re ready for climate monitoring.
                 </p>
               </div>
-              <div className="flex flex-col gap-2 sm:flex-row md:flex-col">
+              {/* Install is the primary action — the app is what we
+                  want in a farmer's hand, and the badge is the most
+                  recognisable button on the page. The browser route
+                  stays as the equal-weight alternative for anyone on
+                  desktop; pricing drops to a text link rather than
+                  competing as a third button. */}
+              <div className="flex flex-col items-stretch gap-3 md:items-end">
+                <PlayStoreBadge />
                 <a
                   href={`${tenantUrl}/register`}
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-[15px] font-bold text-[var(--color-brand-primary-deep)] transition-colors hover:bg-white/90"
@@ -394,7 +410,7 @@ export default function HomePage() {
                 </a>
                 <Link
                   href="/pricing"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/40 bg-transparent px-6 py-3.5 text-[15px] font-bold text-white hover:bg-white/10"
+                  className="text-center text-[14px] font-semibold text-white/80 underline decoration-white/40 underline-offset-4 hover:text-white hover:decoration-white"
                 >
                   See pricing
                 </Link>
