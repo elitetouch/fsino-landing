@@ -71,7 +71,7 @@ export default function ContactPage() {
             title="Email"
             body="For anything non-urgent feature ideas, billing questions, partnership enquiries."
             cta="support@fsinnovation.net"
-            href="mailto:spport@fsinnovation.net"
+            href="mailto:support@fsinnovation.net"
             tone="brand"
           />
           {waGroupReady && (
